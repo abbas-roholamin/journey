@@ -21,7 +21,20 @@
             const root = document.querySelector('[x-data]');
             const rawData = getInitialData();
             const data = observer(rawData);
+            registerEventListers();
             refreshDom();
+
+
+            function registerEventListers() {
+                walk(root, el => {
+                    if (el.hasAttribute("@click")) {
+                        let expression = el.getAttribute("@click");
+                        el.addEventListener('click', () => {
+                            eval(`with (data) {(${expression})}`);
+                        });
+                    }
+                });
+            }
 
             function observer(data) {
                 return new Proxy(data, {
