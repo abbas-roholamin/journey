@@ -20,10 +20,33 @@
         <script>
             const root = document.querySelector('[x-data]');
             const rawData = getInitialData();
+            refreshDom();
             function getInitialData() {
                 const initialData = root.getAttribute('x-data');
                 return eval(`(${initialData})`);
             }
+
+            function refreshDom() {
+                walk(root, el => {
+                    if (el.hasAttribute("x-text")) {
+                        let value = el.getAttribute("x-text");
+                        el.innerText = eval(`with (data) {(${value})}`);
+                    }
+                });
+            }
+
+
+            function walk(el, callback) {
+                callback(el);
+                el = el.firstElementChild;
+                while (el) {
+                    walk(el, callback);
+                    el = el.nextElementSibling;
+                }
+
+            }
+
+
         </script>
     </body>
 
