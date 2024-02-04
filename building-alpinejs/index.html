@@ -20,7 +20,19 @@
         <script>
             const root = document.querySelector('[x-data]');
             const rawData = getInitialData();
+            const data = observer(rawData);
             refreshDom();
+
+            function observer(data) {
+                return new Proxy(data, {
+                    set(target, key, value) {
+                        target[key] = value;
+                        refreshDom();
+                    }
+                });
+            }
+
+
             function getInitialData() {
                 const initialData = root.getAttribute('x-data');
                 return eval(`(${initialData})`);
