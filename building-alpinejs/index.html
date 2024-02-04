@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Creating Aplinjs</title>
+    </head>
+
+    <body>
+        <div x-data="{count: 0}">
+            <div @click="count++">+</div>
+            <div @click="count--">-</div>
+            <p x-text="count"></p>
+            <dir>
+                <span></span>
+            </dir>
+        </div>
+
+        <script>
+            const root = document.querySelector('[x-data]');
+            const rawData = getInitialData();
+            function getInitialData() {
+                const initialData = root.getAttribute('x-data');
+                return eval(`(${initialData})`);
+            }
+        </script>
+    </body>
+
+</html>
