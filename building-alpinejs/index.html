@@ -4,15 +4,63 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Creating Aplinjs</title>
+        <title>Creating Aplinejs</title>
+        <style>
+            body {
+                height: 100vh;
+                background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+                display: grid;
+                place-items: center;
+                overflow: hidden;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #fff;
+                cursor: pointer;
+                font-weight: 600;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                transition: all 0.3s ease;
+
+            }
+
+            .counter {
+                font-size: 40px;
+                font-weight: 600;
+                margin: 0 20px;
+
+            }
+
+            .message {
+                font-size: 20px;
+                font-weight: 600;
+                color: #fff;
+                background-color: red;
+                padding: 10px 20px;
+                transition: all 0.3s ease;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+            }
+        </style>
     </head>
 
     <body>
-        <div x-data="{count: 0}">
+        <div x-data="{count: 0}" class="container">
             <button @click="count++">+</button>
-            <span x-text="count"></span>
+            <span x-text="count" class="counter"></span>
             <button @click="count--">-</button>
-            <span x-show="count > 2">I'm over 2</span>
+            <span x-show="count > 2" class="message">I'm over 2</span>
         </div>
 
         <script src="./alpine.js"></script>
