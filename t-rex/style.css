@@ -1,0 +1,100 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --board-width:600px;
+    --board-height:300px;
+    --dino-width:75px;
+    --dino-height: 75px;
+    --dino-top-position: calc(var(--board-height) - var(--dino-height));
+    --rock-width: 50px;
+    --rock-height: 50px;
+    --rock-left-position: calc(var(--board-width) - var(--rock-width));
+    --rock-top-position: calc(var(--board-height) - var(--rock-height));
+}
+body{
+    display:flex;
+    align-items:center;
+    height:100vh;
+    background-color:#c1c1c1;
+    font-family:"Press Start 2P";
+    filter: opacity(0.7);
+}
+
+#score { 
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size:12px;
+ }
+
+#container{
+  width:100%;
+  background-image: url("./images/background.png");
+}
+
+#game {
+  width: var(--board-width);
+  height: var(--board-height);
+  background-size: cover;
+  background-position:0 -20px;
+  position:relative;
+  overflow:hidden;
+  margin:auto;
+}
+
+#dino {
+  height: var(--dino-height);
+  width: var(--dino-width);
+  top: var(--dino-top-position);
+  position: relative;
+  background-image: url("./images/dino.png");
+  background-size: cover;
+}
+
+.jump-animation {
+  animation: jump 0.5s;
+}
+
+
+#rock {
+  width: var(--rock-width);
+  height: var(--rock-height);
+  position: relative;
+  top: 175px;
+  left: 550px;
+  background-image: url("./images/rock.png");
+  background-size: cover;
+}
+
+.animated-rock{
+  animation: rock 1.33s infinite linear;
+}
+
+#again{
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:none;
+  font-size:2rem;
+  background-color:transparent;
+  border:none;
+  transform: translate(-50%, -50%);
+  filter: grayscale(22);
+}
+
+@keyframes rock {
+  0%{left: 550px;}
+  100%{left: -50px;}
+}
+
+
+@keyframes jump {
+  0%{top: 225px;}
+  50%{top: 75px;}
+  75%{top: 75px;}
+  100%{top: 225px;}
+}
