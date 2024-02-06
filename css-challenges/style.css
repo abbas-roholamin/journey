@@ -1,0 +1,182 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+    padding:0;
+    margin: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+
+/* Custome */
+
+:root{
+  /* Primary Colors */
+  --orange:hsl(26, 100%, 55%);
+  --pale-orange:hsl(25, 100%, 94%);
+
+  /* Neutral */
+  --very-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-Grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%) /* (with 75% opacity for lightbox background) */
+
+  /* Font Size */
+  --fs: 1rem;
+
+  /* Font Weidth */
+  --fw-400: 400;
+  --fw-700: 700;
+}
+
+ul{
+ list-style:none
+}
+
+a,
+a:link
+a:active{
+  text-decoration: none;
+  color:inherit
+}
+
+
+.container{
+  max-width:1140px;
+  margin:0 auto;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between; 
+  border-bottom:1px solid var(--dark-grayish-Grayish-blue);
+  margin-bottom:6rem;
+  height:6.5rem;
+  font-size:.9rem;
+  font-width:var(--fw-400);
+  
+  /* Navbar section */
+  .navbar{
+    display: inline-flex;
+
+    .navbar_link{
+      display: inline-flex;
+      align-items:center;
+      color: var(--dark-grayish-Grayish-blue);
+      border-bottom: 2px solid var(--white);
+
+      &:first-child{
+        margin-right: 4rem;
+      }
+  
+      &:not(:first-child){
+        margin-right:1.5rem;
+      }
+  
+      &:not(:first-child):hover{
+        color: var(--very-dark-blue);
+        border-bottom: 2px solid var(--orange); 
+      }
+
+    }
+
+  }
+
+  /* Profile Image */
+  .profile{
+    display:flex;
+    align-items:center;
+
+    .cart_button{
+      background-color:transparent;
+      border:none;
+      margin-right:2.5rem;
+
+      &:hover{
+        cursor:pointer;
+      }
+    }
+
+    .profile_image{
+      width:3rem;
+      height:auto;
+      border:2px solid var(--white);
+      border-radius:50%;
+
+      &:hover{
+        border:2px solid var(--orange);
+        cursor:pointer;
+      }
+    }
+  }
+
+}
+
+
+.product{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  
+  .product_images{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    .product_images-main{
+      width:24rem;
+      border-radius:1rem;
+    }
+
+    .product_images-thumbnails{
+      display:flex;
+      justify-content:space-between;
+
+      .product_images-thumbnail{
+        width:4rem;
+        height:auto;
+      }
+    }
+  }
+}
