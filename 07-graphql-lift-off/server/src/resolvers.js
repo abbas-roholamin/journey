@@ -12,6 +12,27 @@ const resolvers = {
     },
   },
 
+  Mutation: {
+    incrementTrackViews: (_, { id }, { dataSources }) => {
+      try {
+        const track = dataSources.trackAPI.incrementTrackViews(id);
+        return {
+          code: 200,
+          success: true,
+          message: `Successfully incremented number of views for track ${id}`,
+          track,
+        };
+      } catch (error) {
+        return {
+          code: error.extensions.response.status,
+          success: false,
+          message: error.extensions.response.body,
+          track: null,
+        };
+      }
+    },
+  },
+
   Track: {
     author: ({ authorId }, _, { dataSources }) => {
       return dataSources.trackAPI.getAuthor(authorId);
