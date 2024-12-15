@@ -11,6 +11,14 @@ async function main() {
             res.writeHead(200, { 'Content-Type': 'application/json' })
             res.end(JSON.stringify(users))
 
+            // get single user
+        } else if (req.url?.startsWith('/users/') && req.method === 'GET') {
+            const id = req.url.split('/')[2]
+            const user = await prisma.user.findUnique({ where: { id: Number(id) } })
+
+            res.writeHead(200, { 'Content-Type': 'application/json' })
+            res.end(JSON.stringify(user))
+
             // 404
         } else {
             res.writeHead(404)
