@@ -35,6 +35,30 @@ async function main() {
                 res.end(JSON.stringify(user))
             })
 
+            // Update User
+        } else if (req.url?.startsWith('/users/') && req.method === 'PUT') {
+            const id = req.url.split('/')[2]
+            const body: any = []
+
+            req.on('data', (chunk) => {
+                body.push(chunk)
+            })
+
+            req.on('end', async () => {
+                const user = JSON.parse(Buffer.concat(body).toString())
+                await prisma.user.update({
+                    where: {
+                        id: Number(id),
+                    },
+                    data: {
+                        ...body,
+                    },
+                })
+
+                res.writeHead(200, { 'Content-Type': 'application/json' })
+                res.end(JSON.stringify(user))
+            })
+
             //404
         } else {
             res.writeHead(404)
