@@ -59,6 +59,19 @@ async function main() {
                 res.end(JSON.stringify(user))
             })
 
+            // Delete user
+        } else if (req.url?.startsWith('/users') && req.method === 'DELETE') {
+            const id = req.url.split('/')[2]
+
+            const user = await prisma.user.delete({
+                where: {
+                    id: Number(id),
+                },
+            })
+
+            res.writeHead(200, { 'Content-Type': 'application/json' })
+            res.end(JSON.stringify(user))
+
             //404
         } else {
             res.writeHead(404)
