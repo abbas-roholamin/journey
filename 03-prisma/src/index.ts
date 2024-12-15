@@ -19,7 +19,23 @@ async function main() {
             res.writeHead(200, { 'Content-Type': 'application/json' })
             res.end(JSON.stringify(user))
 
-            // 404
+            // create user
+        } else if (req.url === '/users' && req.method === 'POST') {
+            const body: any = []
+
+            req.on('data', (chunk) => {
+                body.push(chunk)
+            })
+
+            req.on('end', async () => {
+                const user = JSON.parse(Buffer.concat(body).toString())
+                await prisma.user.create({ data: user })
+
+                res.writeHead(200, { 'Content-Type': 'application/json' })
+                res.end(JSON.stringify(user))
+            })
+
+            //404
         } else {
             res.writeHead(404)
             res.end()
