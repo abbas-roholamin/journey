@@ -1,6 +1,7 @@
 /** @format */
+import { Resolvers } from "./types";
 
-export const resolvers = {
+export const resolvers:Resolvers = {
   Query: {
     featuredListings: (_, _, { dataSources }) => {
       return dataSources.listingAPI.getFeaturedListings()
