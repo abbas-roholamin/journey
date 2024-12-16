@@ -1,44 +1,48 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Coffee } from './entities/coffee.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Injectable()
 export class CoffeeService {
-  private coffees: Coffee[] = [
-    {
-      id: 1,
-      name: 'Coffee 1',
-      brand: 'Brand 1',
-      flavors: ['Flavor 1', 'Flavor 2'],
-    },
-    {
-      id: 2,
-      name: 'Coffee 2',
-      brand: 'Brand 2',
-      flavors: ['Flavor 1', 'Flavor 3'],
-    },
-  ];
-
+  constructor(
+    @InjectRepository(Coffee)
+    private readonly coffeeRepository: Repository<Coffee>,
+  ) {}
   findAll() {
-    return this.coffees;
+    return this.coffeeRepository.find();
   }
 
-  findOne(id: string) {
-    return this.coffees.find((item) => item.id === +id);
-  }
-
-  create(createCoffeeDto: any) {
-    this.coffees.push(createCoffeeDto);
-  }
-
-  update(id: string, updateCoffeeDto: any) {
-    const existingCoffee = this.findOne(id);
-    if (existingCoffee) {
-      //
+  async findOne(id: number) {
+    const coffee = await this.coffeeRepository.findOneBy({ id });
+    if (!coffee) {
+      throw new NotFoundException(`Coffee #${id} not found`);
     }
+    return coffee;
   }
 
-  delete(id: string) {
-    this.coffees = this.coffees.filter((item) => item.id !== +id);
-    return true;
+  create(createCoffeeDto: CreateCoffeeDto) {
+    const coffee = this.coffeeRepository.create(createCoffeeDto);
+    return this.coffeeRepository.save(coffee);
+  }
+
+  async update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
+    const coffee = await this.findOne(id);
+    if (!coffee) {
+      throw new NotFoundException(`Coffee #${id} not found`);
+    }
+    this.coffeeRepository.merge(coffee, updateCoffeeDto);
+    return this.coffeeRepository.save(coffee);
+  }
+
+  async delete(id: number) {
+    const coffee = await this.findOne(id);
+    if (!coffee) {
+      throw new NotFoundException(`Coffee #${id} not found`);
+    }
+
+    return this.coffeeRepository.remove(coffee);
   }
 }
