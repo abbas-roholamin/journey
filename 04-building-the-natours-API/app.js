@@ -54,6 +54,16 @@ app.get('/api/v1/tours/:id', (req, res) => {
     });
 });
 
+app.delete('/api/v1/tours/:id', (req, res) => {
+    const id = req.params.id * 1;
+    const newTours = tours.filter((el) => el.id !== id);
+
+    res.status(204).json({
+        status: 'success',
+        data: null,
+    });
+});
+
 app.listen(8000, '127.0.0.1', () => {
     console.log('Listening on http://127.0.0.1:8000');
 });
