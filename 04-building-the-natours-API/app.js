@@ -28,5 +28,5 @@ app.use(UserRouter);
 
 // Start the server
 app.listen(8000, '127.0.0.1', () => {
-    console.log('Listening on http://127.0.0.1:8000');
+    console.log('Listening on http://127.0.0.1:8000'); // eslint-disable-line
 });
