@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Request } from 'express';
 
 @Controller('cat')
 export class CatController {
@@ -21,7 +23,7 @@ export class CatController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Req() request: Request) {
     return this.catService.findAll();
   }
 
