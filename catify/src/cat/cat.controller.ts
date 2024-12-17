@@ -9,6 +9,7 @@ import {
   Req,
   HttpCode,
   HttpStatus,
+  Header,
 } from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -21,6 +22,7 @@ export class CatController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @Header('Cache-Control', 'hello-world')
   create(@Body() createCatDto: CreateCatDto) {
     return this.catService.create(createCatDto);
   }
