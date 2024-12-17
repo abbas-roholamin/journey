@@ -5,6 +5,7 @@ class TourController {
     getTour(req, res) {
         res.status(200).json({
             status: 'success',
+            requestedAt: req.requestTime,
             data: {
                 tour: 'The Park Camper',
             },
