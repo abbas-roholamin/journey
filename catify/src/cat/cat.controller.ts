@@ -29,7 +29,7 @@ export class CatController {
   }
 
   @Get()
-  findAll(@Req() request: Request) {
+  async findAll(@Req() request: Request): Promise<any> {
     return this.catService.findAll();
   }
 
