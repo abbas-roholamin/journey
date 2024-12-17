@@ -10,6 +10,7 @@ import {
   HttpCode,
   HttpStatus,
   Header,
+  Redirect,
 } from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -43,6 +44,7 @@ export class CatController {
   }
 
   @Delete(':id')
+  @Redirect('https://docs.nestjs.com', 302)
   remove(@Param('id') id: string) {
     return this.catService.remove(+id);
   }
