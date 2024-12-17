@@ -1,5 +1,6 @@
 /** @format */
 import { Resolvers } from "./types"
+import { validateFullAmenities } from "./helpers"
 
 export const resolvers: Resolvers = {
   Query: {
@@ -8,6 +9,14 @@ export const resolvers: Resolvers = {
     },
     listing: (_, { id }, { dataSources }) => {
       return dataSources.listingAPI.getListing(id)
+    },
+  },
+
+  Listing: {
+    amenities: ({ id, amenities }, _, { dataSources }) => {
+      return validateFullAmenities(amenities)
+        ? amenities
+        : dataSources.listingAPI.getAmenities(id)
     },
   },
 }

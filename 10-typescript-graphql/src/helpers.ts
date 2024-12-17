@@ -1,5 +1,8 @@
-// import { Amenity } from "./types"
+/** @format */
 
-// export const validateFullAmenities = (amenityList: Amenity[]) => amenityList.some(hasOwnPropertyName);
+import { Amenity } from "./types"
 
-// const hasOwnPropertyName = (amenity: Amenity): boolean => "name" in amenity;
+export const validateFullAmenities = (amenityList: Amenity[]) =>
+  amenityList.some(hasOwnPropertyName)
+
+const hasOwnPropertyName = (amenity: Amenity): boolean => "name" in amenity
