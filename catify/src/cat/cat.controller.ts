@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   Req,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -18,6 +20,7 @@ export class CatController {
   constructor(private readonly catService: CatService) {}
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() createCatDto: CreateCatDto) {
     return this.catService.create(createCatDto);
   }
