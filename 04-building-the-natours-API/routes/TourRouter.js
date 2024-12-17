@@ -1,8 +1,11 @@
 const express = require('express');
 
 const TourController = require('../controllers/TourController');
+const ValidateTourIDMiddleware = require('../middleware/ValidateTourIDMiddleware');
 
 const router = express.Router();
+
+router.param('id', ValidateTourIDMiddleware);
 
 router.get('/api/v1/tours', TourController.getAllTours);
 router.post('/api/v1/tours', TourController.createTour);
