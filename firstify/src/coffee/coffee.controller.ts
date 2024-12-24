@@ -18,7 +18,7 @@ import { paginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Controller('coffee')
 export class CoffeeController {
-  constructor(private readonly coffeeService: CoffeeService) { }
+  constructor(private readonly coffeeService: CoffeeService) {}
   @Get()
   findAll(@Query() paginationQuery: paginationQueryDto) {
     // const { limit, offset } = paginationQuery;
