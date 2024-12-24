@@ -27,9 +27,10 @@ export class CoffeeBrandFactory {
     {
       provide: COFFEE_BRANDS,
       // useValue: ['buddy brew', 'nescafe'],
-      useFactory: (coffeeBrandFactory: CoffeeBrandFactory) =>
-        coffeeBrandFactory.create(),
-      inject: [CoffeeBrandFactory],
+      useFactory: async (): Promise<string[]> => {
+        const brands = await Promise.resolve(['buddy brew', 'nescafe']);
+        return brands;
+      },
     },
     {
       provide: ConfigService,
