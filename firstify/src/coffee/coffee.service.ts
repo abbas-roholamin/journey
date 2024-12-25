@@ -20,7 +20,7 @@ export class CoffeeService {
     @Inject(COFFEE_BRANDS) coffeeBrands: string[],
     private readonly configService: ConfigService,
   ) {
-    const databaseHost = this.configService.get('DATABASE_HOST', 'localhost');
+    const databaseHost = this.configService.get('host');
     console.log(databaseHost);
   }
   findAll(paginationQuery: paginationQueryDto) {

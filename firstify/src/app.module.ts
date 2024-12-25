@@ -5,12 +5,15 @@ import { CoffeeModule } from './coffee/coffee.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+import appConfig from './config/app.config';
+import databaseConfig from './config/database.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       // ignoreEnvFile: false,
       // envFilePath: '.env.production',
+      load: [appConfig, databaseConfig],
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(3306),
