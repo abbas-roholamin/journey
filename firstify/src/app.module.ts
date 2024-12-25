@@ -7,7 +7,10 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      // ignoreEnvFile: false,
+      // envFilePath: '.env.production',
+    }),
     CoffeeModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
