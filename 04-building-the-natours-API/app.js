@@ -1,13 +1,22 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const database = require('./config/db');
 
 const TourRouter = require('./routes/TourRouter');
 const UserRouter = require('./routes/UserRouter');
 
-const app = express();
-
 dotenv.config({ path: './config.env' });
+
+database((connection, error) => {
+    if (error) {
+        console.log(error); // eslint-disable-line
+    } else {
+        console.log('Database connection successful!'); // eslint-disable-line
+    }
+});
+
+const app = express();
 
 // Middleware
 app.use(express.static(`${__dirname}/public`));
