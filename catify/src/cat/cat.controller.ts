@@ -16,6 +16,7 @@ import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { Request } from 'express';
+// import { ForbiddenException } from 'src/common/exceptions/forbidden.exception';
 
 @Controller('cat')
 export class CatController {
@@ -25,6 +26,7 @@ export class CatController {
   @HttpCode(HttpStatus.CREATED)
   @Header('Cache-Control', 'hello-world')
   create(@Body() createCatDto: CreateCatDto) {
+    //  throw new ForbiddenException();
     return this.catService.create(createCatDto);
   }
 
