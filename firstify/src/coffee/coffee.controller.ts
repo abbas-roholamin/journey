@@ -17,6 +17,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { paginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int/parse-int.pipe';
+import { Protocol } from 'src/common/decorators/protocol.decorator';
 
 @Controller('coffee')
 export class CoffeeController {
@@ -24,7 +25,12 @@ export class CoffeeController {
 
   @Public()
   @Get()
-  findAll(@Query() paginationQuery: paginationQueryDto) {
+  findAll(
+    @Protocol() protocol: string,
+    @Query() paginationQuery: paginationQueryDto,
+  ) {
+    console.log(protocol);
+
     // const { limit, offset } = paginationQuery;
     // findAll(@Res() res) {
     // res.status(200).send('Get All Coffees');
