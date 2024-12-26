@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { CoffeeModule } from './coffee/coffee.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
 import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
@@ -35,6 +36,7 @@ import databaseConfig from './config/database.config';
       }),
     }),
     CoffeeModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
