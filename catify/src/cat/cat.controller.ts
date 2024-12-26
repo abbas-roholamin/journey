@@ -11,13 +11,16 @@ import {
   HttpStatus,
   Header,
   Redirect,
+  // UseFilters,
 } from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { Request } from 'express';
+// import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 // import { ForbiddenException } from 'src/common/exceptions/forbidden.exception';
 
+// @UseFilters(HttpExceptionFilter)
 @Controller('cat')
 export class CatController {
   constructor(private readonly catService: CatService) {}
@@ -25,6 +28,7 @@ export class CatController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @Header('Cache-Control', 'hello-world')
+  // @UseFilters(HttpExceptionFilter)
   create(@Body() createCatDto: CreateCatDto) {
     //  throw new ForbiddenException();
     return this.catService.create(createCatDto);
