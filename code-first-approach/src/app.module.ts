@@ -11,6 +11,9 @@ import { CoffeeModule } from './coffee/coffee.module';
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      // buildSchemaOptions: {
+      //   numberScalarMode: 'integer',
+      // },
     }),
     CoffeeModule,
   ],

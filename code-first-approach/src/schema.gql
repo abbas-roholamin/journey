@@ -2,8 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A coffee entity
+"""
 type Coffee {
-  id: Float!
+  """
+  The id of the coffee
+  """
+  id: ID!
   name: String!
   brand: String!
   flavors: [String!]!
