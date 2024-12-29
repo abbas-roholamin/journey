@@ -20,9 +20,11 @@ import { ParseIntPipe } from 'src/common/pipes/parse-int/parse-int.pipe';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
 import {
   ApiForbiddenResponse,
+  ApiTags,
   //  ApiResponse
 } from '@nestjs/swagger';
 
+@ApiTags('coffee')
 @Controller('coffee')
 export class CoffeeController {
   constructor(private readonly coffeeService: CoffeeService) {}
