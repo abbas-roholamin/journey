@@ -2,13 +2,9 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""
-A coffee entity
-"""
+"""A coffee entity"""
 type Coffee {
-  """
-  The id of the coffee
-  """
+  """The id of the coffee"""
   id: ID!
   name: String!
   brand: String!
@@ -17,4 +13,5 @@ type Coffee {
 
 type Query {
   coffees: [Coffee!]!
+  coffee(id: ID!): Coffee
 }
