@@ -2,12 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""A drink that can be consumed"""
-interface Drink {
-  """The name of the drink"""
-  name: String!
-}
-
 type Flavor {
   """The id of the flavor"""
   id: ID!
@@ -26,6 +20,12 @@ type Coffee implements Drink {
   createdAt: Date
 }
 
+"""A drink that can be consumed"""
+interface Drink {
+  """The name of the drink"""
+  name: String!
+}
+
 type Tee implements Drink {
   name: String!
 }
@@ -34,10 +34,12 @@ type Tee implements Drink {
 scalar Date
 
 type Query {
-  drinks: [Drink!]!
+  drinks: [DrinkResult!]!
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
 }
+
+union DrinkResult = Coffee | Tee
 
 type Mutation {
   createCoffee(createCoffeeInput: CreateCoffeeInput!): Coffee!
