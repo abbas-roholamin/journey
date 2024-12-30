@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""A drink that can be consumed"""
+interface Drink {
+  """The name of the drink"""
+  name: String!
+}
+
 type Flavor {
   """The id of the flavor"""
   id: ID!
@@ -10,19 +16,25 @@ type Flavor {
 }
 
 """A coffee entity"""
-type Coffee {
+type Coffee implements Drink {
+  name: String!
+
   """The id of the coffee"""
   id: ID!
-  name: String!
   brand: String!
   flavors: [Flavor!]!
   createdAt: Date
+}
+
+type Tee implements Drink {
+  name: String!
 }
 
 """Date custom scalar type"""
 scalar Date
 
 type Query {
+  drinks: [Drink!]!
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
 }
