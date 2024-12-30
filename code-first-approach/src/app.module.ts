@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DateScalar } from './common/scalars/date.scalar/date.scalar';
 import { Tee } from './tee/entities/tee.entity/tee.entity';
 import { DrinksResolver } from './drinks/drinks.resolver';
+import { PubSubModule } from './pub-sub/pub-sub.module';
 
 @Module({
   imports: [
@@ -32,8 +33,10 @@ import { DrinksResolver } from './drinks/drinks.resolver';
         // dateScalarMode: 'timestamp',
         orphanedTypes: [Tee],
       },
+      installSubscriptionHandlers: true,
     }),
     CoffeeModule,
+    PubSubModule,
   ],
   controllers: [AppController],
   providers: [AppService, DateScalar, DrinksResolver],

@@ -70,3 +70,7 @@ input UpdateCoffeeInput {
   flavors: [String!]
   type: CoffeeTypes
 }
+
+type Subscription {
+  coffeeAdded: Coffee!
+}

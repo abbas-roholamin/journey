@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Coffee } from './entities/coffee.entity/coffee.entity';
 import { UpdateCoffeeInput } from './dto/update-coffee.input/update-coffee.input';
 import { Flavor } from './entities/flavor.entity/flavor.entity';
+import { PubSub } from 'graphql-subscriptions';
 
 @Injectable()
 export class CoffeeService {
@@ -13,6 +14,7 @@ export class CoffeeService {
     private readonly coffeeRepository: Repository<Coffee>,
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
+    private readonly pubsub: PubSub,
   ) {}
   findAll() {
     return this.coffeeRepository.find();
@@ -36,7 +38,9 @@ export class CoffeeService {
       ...createCoffeeInput,
       flavors,
     });
-    return this.coffeeRepository.save(coffee);
+    const newCoffee = this.coffeeRepository.save(coffee);
+    this.pubsub.publish('coffeeAdded', { coffeeAdded: newCoffee });
+    return newCoffee;
   }
 
   async update(id: number, updateCoffeeInput: UpdateCoffeeInput) {
