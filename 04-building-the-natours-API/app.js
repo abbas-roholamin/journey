@@ -10,6 +10,7 @@ dotenv.config({ path: './config.env' });
 
 database((connection, error) => {
     if (error) {
+        process.exit(1);
         console.log(error); // eslint-disable-line
     } else {
         console.log('Database connection successful!'); // eslint-disable-line
