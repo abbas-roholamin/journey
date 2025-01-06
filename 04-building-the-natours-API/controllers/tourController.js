@@ -22,7 +22,17 @@ class TourController {
 
     async getAllTours(req, res) {
         try {
-            const tours = await Tour.find();
+            let queryString = { ...req.query };
+            const excludeFields = ['page', 'sort', 'limit', 'fields'];
+
+            excludeFields.forEach((field) => {
+                delete queryString[field];
+            });
+
+            const queryStr = JSON.stringify(queryString);
+            queryString = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+
+            const tours = await Tour.find(JSON.parse(queryString));
 
             res.status(200).json({
                 status: 'success',
