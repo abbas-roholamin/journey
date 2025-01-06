@@ -29,7 +29,7 @@ export class AuthService {
       throw new ForbiddenException('Incorrect password');
     }
 
-    const payload = { sub: user.id, username: user.email };
+    const payload = { sub: user.id, email: user.email };
     const token = await this.jwtService.signAsync(payload, {
       expiresIn: '15m',
       secret: this.configService.get('JWT_SECRET'),
