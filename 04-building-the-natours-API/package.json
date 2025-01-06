@@ -2,6 +2,9 @@
     "name": "nature-api",
     "version": "1.0.0",
     "main": "index.js",
+    "engines": {
+        "node": ">=22.11.0"
+    },
     "scripts": {
         "dev": "nodemon app.js",
         "lint": "eslint \"**/**/*.js\" --fix"
