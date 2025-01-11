@@ -16,9 +16,29 @@ type AuthPayload {
   token: String!
 }
 
+type Movie {
+  """The id of the coffee"""
+  id: ID!
+  title: String!
+  description: String!
+  imdb_score: Float!
+  genre: MovieGenre!
+  released_year: Float!
+  featured_image: String!
+  video_url: String!
+}
+
+enum MovieGenre {
+  ACTION
+  ANIMATION
+  DRAMA
+}
+
 type Query {
   getUsers: [User!]!
   getUser(id: ID!): User!
+  getMovies: [Movie!]!
+  getMovie(id: ID!): Movie!
 }
 
 type Mutation {
@@ -27,6 +47,9 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: ID!, updateUserInput: UpdateUserInput!): User!
   deleteUser(id: ID!): User!
+  createMovie(createMovieInput: CreateMovieInput!): Movie!
+  updateMovie(id: ID!, updateMovieInput: UpdateMovieInput!): Movie!
+  deleteMovie(id: ID!): Movie!
 }
 
 """Login input"""
@@ -53,4 +76,26 @@ input UpdateUserInput {
   name: String
   email: String
   password: String
+}
+
+"""The movie input"""
+input CreateMovieInput {
+  title: String!
+  description: String!
+  imdb_score: Float!
+  genre: MovieGenre!
+  released_year: Float!
+  featured_image: String!
+  video_url: String!
+}
+
+"""Update Movie input"""
+input UpdateMovieInput {
+  title: String
+  description: String
+  imdb_score: Float
+  genre: MovieGenre
+  released_year: Float
+  featured_image: String
+  video_url: String
 }

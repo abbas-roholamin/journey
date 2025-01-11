@@ -1,11 +1,12 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { join } from 'path';
+import { MovieModule } from './movie/movie.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { join } from 'path';
     }),
     AuthModule,
     UserModule,
+    MovieModule,
   ],
   controllers: [],
   providers: [],
