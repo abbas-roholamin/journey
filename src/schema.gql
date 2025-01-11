@@ -1,0 +1,56 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """The id of the coffee"""
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  name: String!
+  email: String!
+  token: String!
+}
+
+type Query {
+  getUsers: [User!]!
+  getUser(id: ID!): User!
+}
+
+type Mutation {
+  login(loginInput: LoginInput!): AuthPayload!
+  signup(signupInput: SignupInput!): AuthPayload!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: ID!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(id: ID!): User!
+}
+
+"""Login input"""
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+"""Signin input"""
+input SignupInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+"""The user input"""
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  password: String
+}
