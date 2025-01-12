@@ -58,7 +58,7 @@ input LoginInput {
   password: String!
 }
 
-"""Signin input"""
+"""Signup input"""
 input SignupInput {
   name: String!
   email: String!

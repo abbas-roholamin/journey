@@ -1,5 +1,17 @@
-import { InputType } from '@nestjs/graphql';
-import { CreateUserInput } from 'src/user/dto/create-user.input/create-user.input';
+import { Field, InputType } from '@nestjs/graphql';
+import { IsEmail, MinLength } from 'class-validator';
 
-@InputType({ description: 'Signin input' })
-export class SignupInput extends CreateUserInput {}
+@InputType({ description: 'Signup input' })
+export class SignupInput {
+  @Field()
+  @MinLength(3)
+  name: string;
+
+  @Field()
+  @IsEmail()
+  email: string;
+
+  @Field()
+  @MinLength(8)
+  password: string;
+}

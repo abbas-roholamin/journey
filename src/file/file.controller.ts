@@ -30,12 +30,6 @@ export class FileController {
     }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return {
-      filename: file.filename,
-      originalname: file.originalname,
-      mimetype: file.mimetype,
-      size: file.size,
-      path: file.path,
-    };
+    return file;
   }
 }

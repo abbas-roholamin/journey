@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { MovieGenre } from 'src/movie/enum/movie-genre.enum';
+import { MovieGenre } from '../../enum/movie-genre.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
