@@ -37,7 +37,7 @@ enum MovieGenre {
 type Query {
   getUsers: [User!]!
   getUser(id: ID!): User!
-  getMovies: [Movie!]!
+  getMovies(search: String, page: Float): [Movie!]!
   getMovie(id: ID!): Movie!
 }
 

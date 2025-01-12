@@ -12,8 +12,25 @@ export class MovieService {
     private readonly movieRepository: Repository<Movie>,
   ) {}
 
-  async find(): Promise<Movie[]> {
-    return await this.movieRepository.find();
+  async find({
+    search,
+    page = 1,
+  }: {
+    search?: string;
+    page?: number;
+  }): Promise<Movie[]> {
+    const query = this.movieRepository.createQueryBuilder('movie');
+
+    if (search) {
+      query.where('movie.title ILIKE :search', {
+        search: `%${search}%`,
+      });
+    }
+
+    return await query
+      .skip((page - 1) * 4)
+      .take(4)
+      .getMany();
   }
 
   async findOne(where: { where: { [key: string]: any } }): Promise<Movie> {
