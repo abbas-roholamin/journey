@@ -9,9 +9,9 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { JwtGuard } from './guard/jwt.guard';
+import { JwtApiGuard } from '../common/guard';
 
-@UseGuards(JwtGuard)
+@UseGuards(JwtApiGuard)
 @Controller('upload')
 export class FileController {
   constructor(protected readonly configService: ConfigService) {}

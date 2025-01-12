@@ -4,9 +4,9 @@ import { Movie } from './entities/movie.entity/movie.entity';
 import { MovieService } from './movie.service';
 import { CreateMovieInput } from './dto/create-movie.input/create-movie.input';
 import { UpdateMovieInput } from './dto/update-movie.input/update-movie.input';
-import { JwtGuard } from 'src/auth/guard/jwt.guard';
+import { JwtGraphqlGuard } from '../common/guard';
 
-@UseGuards(JwtGuard)
+@UseGuards(JwtGraphqlGuard)
 @Resolver()
 export class MovieResolver {
   constructor(private readonly movieService: MovieService) {}

@@ -4,9 +4,9 @@ import { UserService } from './user.service';
 import { ParseIntPipe, UseGuards } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input/update-user.input';
-import { JwtGuard } from 'src/auth/guard/jwt.guard';
+import { JwtGraphqlGuard } from '../common/guard';
 
-@UseGuards(JwtGuard)
+@UseGuards(JwtGraphqlGuard)
 @Resolver()
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
