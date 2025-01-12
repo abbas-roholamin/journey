@@ -5,9 +5,9 @@
 type User {
   """The id of the coffee"""
   id: ID!
-  name: String!
   email: String!
   password: String!
+  name: String!
 }
 
 type AuthPayload {
@@ -23,9 +23,9 @@ type Movie {
   description: String!
   imdb_score: Float!
   genre: MovieGenre!
-  released_year: Float!
   featured_image: String!
   video_url: String!
+  released_year: Float!
 }
 
 enum MovieGenre {

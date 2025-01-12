@@ -11,9 +11,11 @@ export class User {
   @Column({ length: 100 })
   name: string;
 
+  @Field()
   @Column({ unique: true })
   email: string;
 
+  @Field()
   @Column()
   password: string;
 }

@@ -9,24 +9,30 @@ export class Movie {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Field()
   @Column({ unique: true })
   title: string;
 
+  @Field()
   @Column({ type: 'longtext' })
   description: string;
 
+  @Field()
   @Column({ type: 'double' })
   imdb_score: number;
 
-  @Column({ nullable: true })
+  @Field()
+  @Column({ nullable: true, type: 'enum', enum: MovieGenre })
   genre: MovieGenre;
 
   @Column()
   released_year: number;
 
+  @Field()
   @Column()
   featured_image: string;
 
+  @Field()
   @Column()
   video_url: string;
 }
