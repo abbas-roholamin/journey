@@ -22,7 +22,12 @@ export class Movie {
   imdb_score: number;
 
   @Field()
-  @Column({ nullable: true, type: 'enum', enum: MovieGenre })
+  @Column({
+    nullable: true,
+    type: 'enum',
+    enum: MovieGenre,
+    default: MovieGenre.ACTION,
+  })
   genre: MovieGenre;
 
   @Column()
