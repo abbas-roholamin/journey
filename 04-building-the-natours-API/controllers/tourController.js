@@ -48,6 +48,17 @@ class TourController {
                 query = query.select('-__v');
             }
 
+            const page = req.query.page * 1 || 1;
+            const skip = (page - 1) * 3;
+            query = query.skip(skip).limit(3);
+
+            if (req.query.page) {
+                const numTours = await Tour.countDocuments();
+                if (skip >= numTours) {
+                    throw new Error('This page does not exist');
+                }
+            }
+
             const tours = await query;
 
             res.status(200).json({
