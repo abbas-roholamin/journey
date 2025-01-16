@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 type Props = {
   params: Promise<{ productId: string }>;
 };
@@ -18,7 +19,12 @@ export const generateMetadata = async ({
 async function Page({ params }: Props) {
   const producId = (await params).productId;
 
-  return <p>Product {producId} details Page</p>;
+  return (
+    <div>
+      <p>Product {producId} details Page</p>
+      <Link href={`/products/${producId}/reviews`}>Reviews</Link>
+    </div>
+  );
 }
 
 export default Page;
