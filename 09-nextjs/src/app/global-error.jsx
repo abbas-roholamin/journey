@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-function globalError() {
+function GlobalError() {
   return (
     <html>
       <body className="text-red-400">
@@ -12,4 +12,4 @@ function globalError() {
   );
 }
 
-export default global - error;
+export default GlobalError;
