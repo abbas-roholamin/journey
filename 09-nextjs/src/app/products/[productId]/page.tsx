@@ -16,7 +16,14 @@ export const generateMetadata = async ({
   };
 };
 
+const generateRandomNumber = () => Math.floor(Math.random() * 2);
+
 async function Page({ params }: Props) {
+  const randomNumber = generateRandomNumber();
+  if (randomNumber === 1) {
+    throw new Error("Something went wrong");
+  }
+
   const producId = (await params).productId;
 
   return (
