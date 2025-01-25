@@ -1,7 +1,13 @@
+import { type NextRequest } from "next/server";
 import { data } from "./data";
 
-export async function GET() {
-  return new Response(JSON.stringify(data));
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const query = searchParams.get("query");
+
+  const users = query ? data.filter((item) => item.name.includes(query)) : data;
+
+  return new Response(JSON.stringify(users));
 }
 
 export async function POST(request: Request) {
