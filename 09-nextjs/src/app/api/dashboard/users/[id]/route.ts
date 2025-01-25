@@ -1,6 +1,6 @@
 import { type NextRequest } from "next/server";
 import { data } from "../data";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 
 export async function GET(
   request: NextRequest,
@@ -16,12 +16,23 @@ export async function GET(
 
   console.log(authorization);
 
+  // 01
+  // const cookies = request.cookies.get("name");
+  // console.log(cookies);
+
+  // 02
+  const requestCookies = await cookies();
+  requestCookies.set("age", "20");
+  const age = requestCookies.get("age");
+  console.log(age);
+
   const { id } = await params;
   const user = data.filter((item) => item.id == +id);
 
   return new Response(JSON.stringify(user), {
     headers: {
       "Content-Type": "application/json",
+      "Set-Cookie": "name=John Doe",
     },
   });
 }
