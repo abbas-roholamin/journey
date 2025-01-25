@@ -1,13 +1,29 @@
+import { type NextRequest } from "next/server";
 import { data } from "../data";
+import { headers } from "next/headers";
 
 export async function GET(
-  _request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // 01
+  // const headers = new Headers(request.headers);
+  // const authorization = headers.get("Authorization");
+
+  // 02
+  const requestHeaders = await headers();
+  const authorization = requestHeaders.get("Authorization");
+
+  console.log(authorization);
+
   const { id } = await params;
   const user = data.filter((item) => item.id == +id);
 
-  return Response.json(user);
+  return new Response(JSON.stringify(user), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 export async function PATCH(
