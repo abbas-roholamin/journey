@@ -107,4 +107,10 @@ tourSchema.pre(/^find/, function (next) {
 //     next();
 // });
 
+// Aggregation mioddlewire
+tourSchema.pre('aggregate', function (next) {
+    this.pipeline().unshift({ $match: { secretTour: { $ne: false } } });
+    next();
+});
+
 module.exports = mongoose.model('Tour', tourSchema);
