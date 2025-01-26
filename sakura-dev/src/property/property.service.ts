@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { CreateZodDto } from './dto/create-zod.dto';
 
 @Injectable()
 export class PropertyService {
-  create(createPropertyDto: CreatePropertyDto) {
+  create(createPropertyDto: CreateZodDto) {
     return 'This action adds a new property';
   }
 
