@@ -11,6 +11,7 @@ import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { ParseIdPipe } from './pipes/parseIdPipe';
+import { QueryIdDto } from './dto/query-id.dto';
 
 @Controller('property')
 export class PropertyController {
@@ -33,7 +34,7 @@ export class PropertyController {
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param() { id }: QueryIdDto,
     @Body() updatePropertyDto: UpdatePropertyDto,
   ) {
     return this.propertyService.update(+id, updatePropertyDto);

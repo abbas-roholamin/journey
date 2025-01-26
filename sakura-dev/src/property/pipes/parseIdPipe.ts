@@ -1,5 +1,6 @@
-import { BadRequestException, PipeTransform } from '@nestjs/common';
+import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 
+@Injectable() // Make it available globally
 export class ParseIdPipe implements PipeTransform<string, number> {
   transform(value: string): number {
     const val = parseInt(value);
