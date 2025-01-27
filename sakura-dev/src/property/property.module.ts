@@ -4,10 +4,11 @@ import { PropertyController } from './property.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Property } from './entities/property.entity';
 import { PropertyFeature } from './entities/property-feature.entity/property-feature.entity';
+import { User } from './entities/user.entity/user.entity';
 // import { APP_PIPE } from '@nestjs/core';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Property, PropertyFeature])],
+  imports: [TypeOrmModule.forFeature([Property, PropertyFeature, User])],
   controllers: [PropertyController],
   providers: [
     PropertyService,
