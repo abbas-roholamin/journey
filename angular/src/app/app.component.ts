@@ -19,4 +19,8 @@ export class AppComponent {
   updateImage(e: KeyboardEvent) {
     this.image_url.set((e.target as HTMLInputElement).value);
   }
+
+  sayChild(e: string) {
+    console.log(e);
+  }
 }

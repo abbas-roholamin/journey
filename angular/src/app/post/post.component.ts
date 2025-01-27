@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -7,6 +7,8 @@ import { Component, input } from '@angular/core';
   styleUrl: './post.component.css',
 })
 export class PostComponent {
-  title = input('');
-  url = input('');
+  title = input.required();
+  url = input.required();
+
+  callDad = output<string>();
 }
