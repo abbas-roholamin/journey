@@ -6,17 +6,17 @@ import {
   Patch,
   Param,
   Delete,
-  UsePipes,
-  Headers,
-  ValidationPipe,
+  // UsePipes,
+  // Headers,
+  // ValidationPipe,
 } from '@nestjs/common';
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { ParseIdPipe } from './pipes/parseIdPipe';
 import { QueryIdDto } from './dto/query-id.dto';
-import { RequestHeaderDto } from './dto/request-header.dto';
-import { RequestHeaderDecorator } from './pipes/RequestHeaderPipe';
+// import { RequestHeaderDto } from './dto/request-header.dto';
+// import { RequestHeaderDecorator } from './pipes/RequestHeaderPipe';
 // import { ZodPipe } from './pipes/zodPipe';
 // import { CreateZodDto, CreateZodDtoSchema } from './dto/create-zod.dto';
 
@@ -27,10 +27,10 @@ export class PropertyController {
   // @UsePipes(new ZodPipe(CreateZodDtoSchema))
   @Post()
   create(
-    @RequestHeaderDecorator(
-      new ValidationPipe({ validateCustomDecorators: true }),
-    )
-    headers: RequestHeaderDto,
+    // @RequestHeaderDecorator(
+    //   new ValidationPipe({ validateCustomDecorators: true }),
+    // )
+    // headers: RequestHeaderDto,
     @Body() createPropertyDto: CreatePropertyDto,
   ) {
     return this.propertyService.create(createPropertyDto);
