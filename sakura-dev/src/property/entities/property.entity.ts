@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { PropertyFeature } from './property-feature.entity.ts/property-feature.entity';
+import { PropertyFeature } from './property-feature.entity/property-feature.entity';
 
 @Entity()
 export class Property {
