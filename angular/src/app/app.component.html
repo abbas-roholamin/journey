@@ -1,3 +1,5 @@
 <h1>{{getName()}}</h1>
-<app-post [url]="image_url()" [title]="getName()" (callDad)="sayChild($event)"></app-post>
+<app-post [url]="image_url()" [title]="getName()" (callDad)="sayChild($event)">
+  <p>Content projection</p>
+</app-post>
 <input type="text" (keyup)="updateImage($event)" [value]="image_url()">

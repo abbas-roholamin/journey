@@ -1,5 +1,6 @@
-<div>
+<div class="p-4 border ">
     <img [src]="url()" width="100" height="100">
     <p class="text-3xl font-bold underline">{{title()}}</p>
     <button (click)="callDad.emit('Dad!')" class="p-4 bg-gray-400 rounded">Call Dad</button>
+    <ng-content></ng-content>
 </div>
