@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PostComponent } from './post/post.component';
-import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [PostComponent, TitleCasePipe, DatePipe, CurrencyPipe],
+  imports: [PostComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -14,6 +14,7 @@ export class AppComponent {
   image_url = signal('https://placehold.co/600x400');
   date = signal(new Date());
   cost = signal(12000);
+  updateClass = signal(false);
 
   getName() {
     return this.title().toUpperCase();
