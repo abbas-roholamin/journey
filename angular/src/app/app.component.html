@@ -1,4 +1,4 @@
-<h1>{{getName()}}</h1>
+<h1>{{getName()| titlecase}}</h1>
 <app-post [url]="image_url()" [title]="getName()" (callDad)="sayChild($event)">
   <p>Content projection</p>
 </app-post>
