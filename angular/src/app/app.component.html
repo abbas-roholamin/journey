@@ -3,3 +3,5 @@
   <p>Content projection</p>
 </app-post>
 <input type="text" (keyup)="updateImage($event)" [value]="image_url()">
+<strong>{{date() | date : 'short'}}</strong>
+<strong>{{cost() | currency}}</strong>
