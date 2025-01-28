@@ -8,3 +8,14 @@
 
 <button (click)="updateClass.set(!updateClass())" [ngClass]="{'bg-red-500': updateClass()}"
   [ngStyle]="{'color': updateClass() ? 'black' : 'white'}">Click</button>
+
+<hr>
+
+@if (updateClass()) {
+<p>Updated</p>
+}
+
+
+@for (item of ["a", "b"]; track $index) {
+<p>{{item }}</p>
+}
