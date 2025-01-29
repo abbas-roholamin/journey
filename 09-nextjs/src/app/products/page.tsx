@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  return [{ productId: "1" }, { productId: "2" }, { productId: "3" }];
+}
+
 function Page() {
   return (
     <div>
