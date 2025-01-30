@@ -17,8 +17,11 @@ export class PropertyService {
     return await this.propretyRepository.save(createPropertyDto);
   }
 
-  async findAll() {
-    return await this.propretyRepository.find();
+  async findAll(page: number) {
+    return await this.propretyRepository.find({
+      skip: (page - 1) * 10,
+      take: 10,
+    });
   }
 
   async findOne(id: number) {

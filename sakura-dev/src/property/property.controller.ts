@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
   // UsePipes,
   // Headers,
   // ValidationPipe,
@@ -37,8 +38,8 @@ export class PropertyController {
   }
 
   @Get()
-  findAll() {
-    return this.propertyService.findAll();
+  findAll(@Query('page') page: number) {
+    return this.propertyService.findAll(page || 1);
   }
 
   @Get(':id')
