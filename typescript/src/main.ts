@@ -32,3 +32,10 @@ console.log(
   anyVal,
   // neverVal,
 )
+
+// 028 Optional Function Parameters
+function add(x: number, y?: number): number {
+  return y ? x + y : x
+}
+
+console.log(add(1, 2), add(1))
