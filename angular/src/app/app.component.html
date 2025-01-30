@@ -1,5 +1,21 @@
-<h1>{{getName()}}</h1>
+<h1>{{getName()| titlecase}}</h1>
 <app-post [url]="image_url()" [title]="getName()" (callDad)="sayChild($event)">
   <p>Content projection</p>
 </app-post>
 <input type="text" (keyup)="updateImage($event)" [value]="image_url()">
+<strong>{{date() | date : 'short'}}</strong>
+<strong>{{cost() | currency}}</strong>
+
+<button (click)="updateClass.set(!updateClass())" [ngClass]="{'bg-red-500': updateClass()}"
+  [ngStyle]="{'color': updateClass() ? 'black' : 'white'}">Click</button>
+
+<hr>
+
+@if (updateClass()) {
+<p>Updated</p>
+}
+
+
+@for (item of ["a", "b"]; track $index) {
+<p>{{item }}</p>
+}
