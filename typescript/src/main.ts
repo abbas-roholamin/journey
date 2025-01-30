@@ -34,7 +34,7 @@ console.log(
 )
 
 // 028 Optional Function Parameters
-function add(x: number, y?: number): number {
+function add(x: number, y: number = 1): number {
   return y ? x + y : x
 }
 
