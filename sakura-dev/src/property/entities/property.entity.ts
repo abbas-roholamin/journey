@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { PropertyFeature } from './property-feature.entity/property-feature.entity';
-import { User } from './user.entity/user.entity';
+import { User } from '../../user/entities/user.entity';
 
 @Entity()
 export class Property {

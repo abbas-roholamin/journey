@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 import { PropertyFeature } from '../property/entities/property-feature.entity/property-feature.entity';
-import { User } from '../property/entities/user.entity/user.entity';
 import { Property } from '../property/entities/property.entity';
+import { User } from '../user/entities/user.entity';
 
 export class MainSeeder implements Seeder {
   public async run(

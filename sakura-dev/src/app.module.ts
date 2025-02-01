@@ -4,10 +4,11 @@ import { AppService } from './app.service';
 import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, expandVariables: true }),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
@@ -18,6 +19,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
     }),
     PropertyModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
