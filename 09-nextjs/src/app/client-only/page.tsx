@@ -1,9 +1,11 @@
 "use client";
 
-import { serverOnly } from "../utils/server-onyl";
+import { ClientOnly } from "../utils/client-only";
+// import { serverOnly } from "../utils/server-onyl";
 
 function Page() {
-  const data = serverOnly();
+  // const data = serverOnly(); Error
+  const data = ClientOnly();
   return <div>Profile Page {data}</div>;
 }
 
