@@ -1,0 +1,12 @@
+{
+  "name": "fastify",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "dependencies": {
+    "@fastify/swagger": "^9.4.2",
+    "fastify": "^5.2.1"
+  }
+}
