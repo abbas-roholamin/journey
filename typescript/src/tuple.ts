@@ -1,7 +1,7 @@
 /** @format */
 
-type Location = [number, number]
-type Location2 = [lang: number, lat: number]
+type Location = [number, number, number?]
+type Location2 = [lang: number, lat: number, optional?: number]
 
 function location(location: Location) {
   console.log(location[0])
