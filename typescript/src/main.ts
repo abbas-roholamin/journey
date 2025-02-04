@@ -1,5 +1,4 @@
 /** @format */
-
 // typescript types
 const str: string = "Hello"
 const num: number = 42
