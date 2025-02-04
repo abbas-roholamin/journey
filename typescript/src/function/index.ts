@@ -12,3 +12,8 @@ export function updateUser(
 ) {
   return users.map((user) => (user.id === id ? makeChange(user) : user))
 }
+
+/****************** Void ***************************/
+export function logMessage(message: string): void {
+  console.log(message)
+}

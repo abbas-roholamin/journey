@@ -1,7 +1,7 @@
 /** @format */
 import { describe, expect, it } from "vitest"
 
-import { updateUser } from "."
+import { logMessage, updateUser } from "."
 
 describe("Function", () => {
   it("should update user", () => {
@@ -17,5 +17,11 @@ describe("Function", () => {
       { id: 1, name: "John Doe" },
       { id: 2, name: "Jane" },
     ])
+  })
+
+  // Void
+  it("should log message", () => {
+    const message = logMessage("hello")
+    expect(message).toBeUndefined()
   })
 })
