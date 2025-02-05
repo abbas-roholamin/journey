@@ -1,0 +1,31 @@
+{
+  "name": "react-email-with-resend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "email": "email dev --dir src/app/email"
+  },
+  "dependencies": {
+    "@react-email/components": "0.0.32",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8",
+    "react-email": "3.0.6",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
