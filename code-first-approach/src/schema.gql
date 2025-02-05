@@ -1,0 +1,76 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Flavor {
+  """The id of the flavor"""
+  id: ID!
+  name: String!
+  coffees: [Coffee!]!
+}
+
+"""A coffee entity"""
+type Coffee implements Drink {
+  name: String!
+
+  """The id of the coffee"""
+  id: ID!
+  brand: String!
+  flavors: [Flavor!]!
+  createdAt: Date
+  type: CoffeeTypes
+}
+
+"""A drink that can be consumed"""
+interface Drink {
+  """The name of the drink"""
+  name: String!
+}
+
+enum CoffeeTypes {
+  ESPRESSO
+  LATTE
+  CAPPUCCINO
+}
+
+type Tee implements Drink {
+  name: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Query {
+  drinks: [DrinkResult!]!
+  coffees: [Coffee!]!
+  coffee(id: ID!): Coffee!
+}
+
+union DrinkResult = Coffee | Tee
+
+type Mutation {
+  createCoffee(createCoffeeInput: CreateCoffeeInput!): Coffee!
+  updateCoffee(id: ID!, updateCoffeeInput: UpdateCoffeeInput!): Coffee!
+  deleteCoffee(id: ID!): Coffee!
+}
+
+"""The input to create a coffee"""
+input CreateCoffeeInput {
+  """The name of a coffee"""
+  name: String!
+  brand: String!
+  flavors: [String!]!
+  type: CoffeeTypes!
+}
+
+input UpdateCoffeeInput {
+  """The name of a coffee"""
+  name: String
+  brand: String
+  flavors: [String!]
+  type: CoffeeTypes
+}
+
+type Subscription {
+  coffeeAdded: Coffee!
+}
