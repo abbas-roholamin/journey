@@ -1,3 +1,4 @@
+import Submit from "@/app/components/Submit";
 import { createProduct } from "@/prisma-db";
 import { redirect } from "next/navigation";
 
@@ -30,12 +31,7 @@ export default function CreateProductForm() {
         <label>
           <input type="number" name="qauntity" />
         </label>
-        <button
-          type="submit"
-          className="p-4 rounded bg-white text-black disabled:animate-pulse"
-        >
-          Create
-        </button>
+        <Submit />
       </form>
     </div>
   );
