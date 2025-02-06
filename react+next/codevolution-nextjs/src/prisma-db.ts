@@ -2,6 +2,14 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export type Product = {
+  id: number;
+  title: string;
+  description?: string | null;
+  qauntity: number;
+  price: number;
+};
+
 export const seedProducts = async () => {
   const count = await prisma.product.count();
 
@@ -31,11 +39,11 @@ export const seedProducts = async () => {
   }
 };
 
-export const getProducts = async () => {
+export const getProducts = async (): Promise<Product[]> => {
   return await prisma.product.findMany();
 };
 
-export const getProduct = async (id: number) => {
+export const getProduct = async (id: number): Promise<Product | null> => {
   return await prisma.product.findUnique({ where: { id } });
 };
 
@@ -44,7 +52,7 @@ export const createProduct = async (body: {
   description: string;
   qauntity: number;
   price: number;
-}) => {
+}): Promise<Product> => {
   return await prisma.product.create({ data: body });
 };
 
@@ -56,14 +64,14 @@ export const updateProduct = async (
     qauntity: number;
     price: number;
   }
-) => {
+): Promise<Product> => {
   return await prisma.product.update({
     where: { id },
     data: body,
   });
 };
 
-export const deleteProduct = async (id: number) => {
+export const deleteProduct = async (id: number): Promise<Product> => {
   return await prisma.product.delete({
     where: { id },
   });

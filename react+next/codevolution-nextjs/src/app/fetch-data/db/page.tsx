@@ -1,12 +1,6 @@
-import { getProducts, seedProducts } from "@/prisma-db";
 
-type Product = {
-  id: number;
-  title: string;
-  description?: string | null;
-  qauntity: number;
-  price: number;
-};
+import { getProducts, Product, seedProducts } from "@/prisma-db";
+import ProductItem from "./ProductItem";
 
 export default async function Page({
   searchParams,
@@ -25,15 +19,8 @@ export default async function Page({
     return <div className="text-white"> NO DATA</div>;
   }
 
+
   return (
-    <div>
-      <ul className="space-y-4">
-        {products.map((product) => (
-          <li key={product.id} className=" bg-white text-black p-4 rounded ">
-            {product.title} - {product.description}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ProductItem products={products} />
   );
 }
