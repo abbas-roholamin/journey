@@ -9,6 +9,11 @@ async function main() {
     app.use(express.json())
 
     // User Routes
+    app.get('/users', UserController.index)
+    app.post('/users', UserController.create)
+    app.patch('/users/:id', UserController.update)
+    app.delete('/users/:id', UserController.delete)
+
 
     app.listen(8800, '127.0.0.1', () => {
         console.log('Listening on http://127.0.0.1:8800')
