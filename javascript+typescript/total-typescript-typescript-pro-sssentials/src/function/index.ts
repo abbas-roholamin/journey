@@ -30,3 +30,21 @@ type Directions = "left" | "right"
 export function move(direction: Directions, distance: number): string {
   return `${direction} - ${distance}`
 }
+
+// Combining Union Types
+type ErrorCodes = 402 | 404 | 500
+export function handleError(code: ErrorCodes, message: string): string {
+  return `${message} - ${code}`
+}
+
+type SuccessCodes = 200 | 201
+export function handleSuccess(code: SuccessCodes, message: string): string {
+  return `${message} - ${code}`
+}
+
+export function handleRequest(
+  code: SuccessCodes | ErrorCodes,
+  message: string,
+): string {
+  return `${message} - ${code}`
+}

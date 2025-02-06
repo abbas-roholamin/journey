@@ -1,7 +1,15 @@
 /** @format */
 import { describe, expect, it } from "vitest"
 
-import { addTax, logMessage, move, updateUser } from "."
+import {
+  addTax,
+  handleError,
+  handleRequest,
+  handleSuccess,
+  logMessage,
+  move,
+  updateUser,
+} from "."
 
 describe("Function", () => {
   it("should update user", () => {
@@ -42,6 +50,18 @@ describe("Function", () => {
     it("should return ", () => {
       const result = move("left", 100)
       expect(result).toBe("left - 100")
+    })
+  })
+
+  describe("Combining Union Types", () => {
+    it("should return 404", () => {
+      const result = handleError(404, "Not Found")
+      expect(result).toBe("Not Found - 404")
+    })
+
+    it("should return 200", () => {
+      const result = handleRequest(201, "Request")
+      expect(result).toBe("Request - 201")
     })
   })
 })
