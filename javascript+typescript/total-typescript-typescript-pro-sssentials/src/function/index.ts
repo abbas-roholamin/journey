@@ -17,3 +17,10 @@ export function updateUser(
 export function logMessage(message: string): void {
   console.log(message)
 }
+
+// Nul Prama
+
+export function addTax(amount: number | null): number {
+  const price = 100
+  return amount ? price + amount : price
+}

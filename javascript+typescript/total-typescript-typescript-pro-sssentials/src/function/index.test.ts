@@ -1,7 +1,7 @@
 /** @format */
 import { describe, expect, it } from "vitest"
 
-import { logMessage, updateUser } from "."
+import { addTax, logMessage, updateUser } from "."
 
 describe("Function", () => {
   it("should update user", () => {
@@ -23,5 +23,18 @@ describe("Function", () => {
   it("should log message", () => {
     const message = logMessage("hello")
     expect(message).toBeUndefined()
+  })
+
+  // Null
+  describe("Null", () => {
+    it("should return 100", () => {
+      const tax = addTax(null)
+      expect(tax).toBe(100)
+    })
+
+    it("should return 110", () => {
+      const tax = addTax(10)
+      expect(tax).toBe(110)
+    })
   })
 })
