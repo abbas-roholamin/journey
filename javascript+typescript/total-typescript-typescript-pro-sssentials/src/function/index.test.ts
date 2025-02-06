@@ -1,7 +1,7 @@
 /** @format */
 import { describe, expect, it } from "vitest"
 
-import { addTax, logMessage, updateUser } from "."
+import { addTax, logMessage, move, updateUser } from "."
 
 describe("Function", () => {
   it("should update user", () => {
@@ -35,6 +35,13 @@ describe("Function", () => {
     it("should return 110", () => {
       const tax = addTax(10)
       expect(tax).toBe(110)
+    })
+  })
+
+  describe("Restricted params", () => {
+    it("should return ", () => {
+      const result = move("left", 100)
+      expect(result).toBe("left - 100")
     })
   })
 })

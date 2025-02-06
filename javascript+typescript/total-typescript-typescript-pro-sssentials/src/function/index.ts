@@ -24,3 +24,9 @@ export function addTax(amount: number | null): number {
   const price = 100
   return amount ? price + amount : price
 }
+
+// Restricted Function params
+type Directions = "left" | "right"
+export function move(direction: Directions, distance: number): string {
+  return `${direction} - ${distance}`
+}
