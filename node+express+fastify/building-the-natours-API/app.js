@@ -6,7 +6,7 @@ const database = require('./config/db');
 const TourRouter = require('./routes/TourRouter');
 const UserRouter = require('./routes/UserRouter');
 
-dotenv.config({ path: './config.env' });
+dotenv.config();
 
 database((connection, error) => {
     if (error) {
@@ -37,6 +37,6 @@ app.use(TourRouter);
 app.use(UserRouter);
 
 // Start the server
-app.listen(8000, '127.0.0.1', () => {
-    console.log('Listening on http://127.0.0.1:8000'); // eslint-disable-line
+app.listen(process.env.PORT, '127.0.0.1', () => {
+    console.log(`Listening on http://127.0.0.1:${process.env.PORT}`); // eslint-disable-line
 });
