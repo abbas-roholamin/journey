@@ -1,14 +1,13 @@
-
 import { getProducts, Product, seedProducts } from "@/prisma-db";
 import ProductItem from "./ProductItem";
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ seed: boolean }>;
+  searchParams: Promise<{ seed: boolean; query?: string }>;
 }) {
-  const { seed } = await searchParams;
-  const products: Product[] = await getProducts();
+  const { seed, query } = await searchParams;
+  const products: Product[] = await getProducts(query);
 
   if (seed) {
     await seedProducts();
@@ -19,8 +18,5 @@ export default async function Page({
     return <div className="text-white"> NO DATA</div>;
   }
 
-
-  return (
-    <ProductItem products={products} />
-  );
+  return <ProductItem products={products} />;
 }
