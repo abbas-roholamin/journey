@@ -9,6 +9,7 @@ import {
   logMessage,
   move,
   updateUser,
+  validationUsername,
 } from "."
 
 describe("Function", () => {
@@ -62,6 +63,20 @@ describe("Function", () => {
     it("should return 200", () => {
       const result = handleRequest(201, "Request")
       expect(result).toBe("Request - 201")
+    })
+  })
+
+  // Narrowing
+
+  describe("Conditional Narrowing", () => {
+    it("should return true", () => {
+      const result = validationUsername("abbas-roholamin")
+      expect(result).toBeTruthy()
+    })
+
+    it("should return false", () => {
+      const result = validationUsername(null)
+      expect(result).toBeFalsy()
     })
   })
 })

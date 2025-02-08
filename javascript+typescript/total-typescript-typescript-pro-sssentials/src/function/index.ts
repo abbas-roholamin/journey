@@ -48,3 +48,19 @@ export function handleRequest(
 ): string {
   return `${message} - ${code}`
 }
+
+// Conditional Narrowing in TypeScript
+
+export function validationUsername(username: string | null): boolean {
+  // 01
+  // if (username) {
+  //   return username.length > 5
+  // }
+
+  // 02
+  if (typeof username === "string") {
+    return username.length > 5
+  }
+
+  return false
+}
