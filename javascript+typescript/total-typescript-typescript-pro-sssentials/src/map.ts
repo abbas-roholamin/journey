@@ -23,3 +23,24 @@ numbers.set("", "hello")
 oddNumber.set("", "hello")
 // @ts-expect-error
 evenNumber.set(1, "hello")
+
+// Map Narrowing
+
+type Event = {
+  message: string
+}
+
+function customEvent(eventMap: Map<string, Event>) {
+  // Problem
+  // if (eventMap.has("error")) {
+  //   const msg = eventMap.get("error")
+  //   throw new Error(msg)
+  // }
+
+  // Solution
+  const event = eventMap.get("error")
+  if (event) {
+    const msg = event.message
+    throw new Error(msg)
+  }
+}
