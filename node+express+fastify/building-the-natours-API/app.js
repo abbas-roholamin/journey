@@ -35,6 +35,12 @@ app.use((req, res, next) => {
 // Routes
 app.use(TourRouter);
 app.use(UserRouter);
+app.all('*', (req, res) => {
+    res.status(404).json({
+        status: 'fail',
+        message: `Can't find ${req.originalUrl} on this server!`,
+    });
+});
 
 // Start the server
 app.listen(process.env.PORT, '127.0.0.1', () => {
