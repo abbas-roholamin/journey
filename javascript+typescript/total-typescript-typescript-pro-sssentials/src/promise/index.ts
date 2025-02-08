@@ -16,3 +16,24 @@ export async function fetchTodos() {
   const data: Promise<Todo[]> = result.json()
   return data
 }
+
+// Narrowing with instanceof
+
+export async function searchTodo(query?: string) {
+  try {
+    const result = await fetch(
+      `https://jsonplaceholder.typicode.com/todos?q=${query}`,
+    )
+    const data: Promise<Todo[]> = result.json()
+
+    if ((await data).length == 0) {
+      throw new Error("No todo found")
+    }
+
+    return data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message)
+    }
+  }
+}
