@@ -64,3 +64,34 @@ export function validationUsername(username: string | null): boolean {
 
   return false
 }
+
+// Narrowing with in
+type ResponseData = {
+  data: [
+    {
+      id: number
+      name: string
+    },
+  ]
+}
+
+type ResponseError = {
+  error: string
+}
+
+type Response = ResponseData | ResponseError
+export function apiResponse(res: Response) {
+  // Problem
+  // if (true) {
+  //   return res.data[0].id
+  // } else {
+  //   return new Error(res.error)
+  // }
+
+  // Solution
+  if ("data" in res) {
+    return res.data[0].id
+  } else {
+    return new Error(res.error)
+  }
+}
