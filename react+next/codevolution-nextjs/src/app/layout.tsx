@@ -3,6 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,19 +35,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-black text-white `}
-      >
-        <header className="bg-blue-200 space-x-4">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/blog">Contact</Link>
-        </header>
-        <main className="grow">{children}</main>
-        <footer className="bg-blue-200">Footer</footer>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-black text-white `}
+        >
+          <header className="bg-blue-200 space-x-4">
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="/products">Products</Link>
+            <Link href="/blog">Contact</Link>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          <main className="grow">{children}</main>
+          <footer className="bg-blue-200">Footer</footer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
