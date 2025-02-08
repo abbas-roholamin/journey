@@ -7,7 +7,8 @@
     },
     "scripts": {
         "dev": "nodemon app.js",
-        "lint": "eslint \"**/**/*.js\" --fix"
+        "lint": "eslint \"**/**/*.js\" --fix",
+        "debug": "ndb app.js"
     },
     "author": "",
     "license": "ISC",
@@ -28,6 +29,7 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^5.2.1",
         "eslint-plugin-react": "^7.37.2",
+        "ndb": "^1.1.5",
         "nodemon": "^3.1.9",
         "prettier": "^3.4.2"
     }

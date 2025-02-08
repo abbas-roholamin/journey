@@ -1,6 +1,6 @@
 const express = require('express');
 
-const TourController = require('../controllers/TourController');
+const TourController = require('../controllers/tourController');
 const ValidateTourIDMiddleware = require('../middleware/ValidateTourIDMiddleware');
 const TopToursMiddleware = require('../middleware/TopToursMiddleware');
 
