@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 
 import {
   addTax,
+  calculateArea,
   findUserByName,
   handleError,
   handleRequest,
@@ -97,6 +98,19 @@ describe("Function", () => {
     it("should return all users", () => {
       const result = findUserByName({ name: "" }, users)
       expect(result).toEqual(users)
+    })
+  })
+
+  // Discriminated unions in types
+  describe("Discriminated unions in types", () => {
+    it("should return circle area", () => {
+      const result = calculateArea({ kind: "circle", radius: 10 })
+      expect(result).toEqual(Math.PI * 100)
+    })
+
+    it("should return square area", () => {
+      const result = calculateArea({ kind: "square", height: 10, width: 10 })
+      expect(result).toEqual(100)
     })
   })
 })

@@ -127,3 +127,26 @@ export function findUserByName(
 
   return users
 }
+
+// Discriminated unions in types
+
+type Circle = {
+  kind: "circle"
+  radius: number
+}
+
+type Square = {
+  kind: "square"
+  width: number
+  height: number
+}
+
+type Shape = Circle | Square
+
+export function calculateArea(shape: Shape) {
+  if (shape.kind == "circle") {
+    return Math.PI * shape.radius ** 2
+  } else {
+    return shape.width * shape.height
+  }
+}
