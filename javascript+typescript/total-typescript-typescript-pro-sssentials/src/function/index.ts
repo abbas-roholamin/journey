@@ -107,3 +107,23 @@ export function handleSearchParams(params: { id?: string }) {
 
   return id
 }
+
+// Narrowing behavior across scops
+export function findUserByName(
+  searchParams: {
+    name?: string
+  },
+  users: {
+    id: number
+    name: string
+  }[],
+) {
+  const name = searchParams.name
+  if (name) {
+    return users.filter((user) => {
+      return user.name.includes(name)
+    })
+  }
+
+  return users
+}

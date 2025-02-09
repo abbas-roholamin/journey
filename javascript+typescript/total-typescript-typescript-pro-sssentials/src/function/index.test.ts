@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 
 import {
   addTax,
+  findUserByName,
   handleError,
   handleRequest,
   handleSuccess,
@@ -77,6 +78,25 @@ describe("Function", () => {
     it("should return false", () => {
       const result = validationUsername(null)
       expect(result).toBeFalsy()
+    })
+  })
+
+  // Narrowing in Scopes
+
+  describe("Narrowing in Scopes", () => {
+    const users = [
+      { id: 1, name: "abbas" },
+      { id: 2, name: "ali" },
+    ]
+
+    it("should return on object", () => {
+      const result = findUserByName({ name: "abbas" }, users)
+      expect(result).toEqual([users[0]])
+    })
+
+    it("should return all users", () => {
+      const result = findUserByName({ name: "" }, users)
+      expect(result).toEqual(users)
     })
   })
 })
