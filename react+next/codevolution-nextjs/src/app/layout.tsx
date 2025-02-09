@@ -6,9 +6,10 @@ import Link from "next/link";
 import {
   ClerkProvider,
   SignInButton,
+  SignOutButton,
   SignedIn,
   SignedOut,
-  UserButton,
+  // UserButton,
 } from "@clerk/nextjs";
 
 const geistSans = Geist({
@@ -46,10 +47,11 @@ export default function RootLayout({
             <Link href="/products">Products</Link>
             <Link href="/blog">Contact</Link>
             <SignedOut>
-              <SignInButton />
+              <SignInButton mode="modal" />
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <Link href="/profile">Profile</Link>
+              <SignOutButton />
             </SignedIn>
           </header>
           <main className="grow">{children}</main>
