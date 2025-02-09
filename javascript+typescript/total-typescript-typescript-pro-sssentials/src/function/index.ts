@@ -95,3 +95,15 @@ export function apiResponse(res: Response) {
     return new Error(res.error)
   }
 }
+
+// Never Type
+
+function throwError(message: string): never {
+  throw new Error(message)
+}
+
+export function handleSearchParams(params: { id?: string }) {
+  const id = params.id || throwError("No id provided")
+
+  return id
+}
