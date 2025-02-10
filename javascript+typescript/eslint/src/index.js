@@ -1,7 +1,9 @@
 /** @format */
 
-let name = "Hello"
+let name = 'Hello';
 
 const lg = (message) => {
-  return console.log(message)
-}
+  return console.log(message);
+};
+
+// This is a comment
