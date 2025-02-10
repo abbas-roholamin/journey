@@ -108,6 +108,11 @@ describe("Function", () => {
       expect(result).toEqual(Math.PI * 100)
     })
 
+    it("should return circle with optional kind", () => {
+      const result = calculateArea({ radius: 10 })
+      expect(result).toEqual(Math.PI * 100)
+    })
+
     it("should return square area", () => {
       const result = calculateArea({ kind: "square", height: 10, width: 10 })
       expect(result).toEqual(100)

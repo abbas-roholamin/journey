@@ -128,10 +128,13 @@ export function findUserByName(
   return users
 }
 
-// Discriminated unions in types
+// Discriminated unions in types with default options
+// type OptionalCircle = {
+//   radius: number
+// }
 
 type Circle = {
-  kind: "circle"
+  kind?: "circle"
   radius: number
 }
 
@@ -144,9 +147,9 @@ type Square = {
 type Shape = Circle | Square
 
 export function calculateArea(shape: Shape) {
-  if (shape.kind == "circle") {
-    return Math.PI * shape.radius ** 2
-  } else {
+  if (shape.kind == "square") {
     return shape.width * shape.height
+  } else {
+    return Math.PI * shape.radius ** 2
   }
 }
