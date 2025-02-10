@@ -37,3 +37,32 @@ export async function searchTodo(query?: string) {
     }
   }
 }
+
+// Discriminated unions in tuples
+
+type user = {
+  id: number
+  name: string
+  username: string
+  email: string
+  address: Object[]
+  phone: string
+  website: string
+  company: Object[]
+}
+
+type ApiResponse = ["error", string] | ["success", user[]]
+export async function fetchUser(path: string = "users"): Promise<ApiResponse> {
+  try {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/${path}`)
+    if (!res.ok) {
+      return ["error", res.statusText]
+    }
+
+    const data = await res.json()
+    return ["success", data]
+  } catch (error) {
+    const err = error as Error
+    return ["error", err.message]
+  }
+}

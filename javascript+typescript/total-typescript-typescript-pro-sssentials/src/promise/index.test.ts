@@ -1,6 +1,6 @@
 /** @format */
 import { describe, expect, it } from "vitest"
-import { fetchTodo, fetchTodos } from "."
+import { fetchTodo, fetchTodos, fetchUser } from "."
 
 describe("Promise", () => {
   it("Get todo", async () => {
@@ -16,5 +16,17 @@ describe("Promise", () => {
   it("Get todos", async () => {
     const todos = await fetchTodos()
     expect(todos).toHaveLength(200)
+  })
+
+  describe("Fetch Users", () => {
+    it("Status Success", async () => {
+      const [status] = await fetchUser()
+      expect(status).toBe("success")
+    })
+
+    it("Status Error", async () => {
+      const [status] = await fetchUser("error")
+      expect(status).toBe("error")
+    })
   })
 })
