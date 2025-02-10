@@ -1,6 +1,6 @@
 /** @format */
 import { describe, expect, it } from "vitest"
-import { fetchTodo, fetchTodos, fetchUser } from "."
+import { fetchTodo, fetchTodos, fetchUser, fetchUserBool } from "."
 
 describe("Promise", () => {
   it("Get todo", async () => {
@@ -27,6 +27,18 @@ describe("Promise", () => {
     it("Status Error", async () => {
       const [status] = await fetchUser("error")
       expect(status).toBe("error")
+    })
+  })
+
+  describe("Fetch Users", () => {
+    it("Status Success", async () => {
+      const [succeed] = await fetchUserBool()
+      expect(succeed).toBeTruthy()
+    })
+
+    it("Status Error", async () => {
+      const [succeed] = await fetchUserBool("error")
+      expect(succeed).toBeFalsy()
     })
   })
 })

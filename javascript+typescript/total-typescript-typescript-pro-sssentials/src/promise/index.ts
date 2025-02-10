@@ -66,3 +66,23 @@ export async function fetchUser(path: string = "users"): Promise<ApiResponse> {
     return ["error", err.message]
   }
 }
+
+// Discriminated unions in tuples with boolean
+
+type ApiResponseBool = [false, string] | [true, user[]]
+export async function fetchUserBool(
+  path: string = "users",
+): Promise<ApiResponseBool> {
+  try {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/${path}`)
+    if (!res.ok) {
+      return [false, res.statusText]
+    }
+
+    const data = await res.json()
+    return [true, data]
+  } catch (error) {
+    const err = error as Error
+    return [false, err.message]
+  }
+}
