@@ -45,4 +45,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasManyThrough(
+            Project::class,
+            TeamUser::class,
+            'user_id',
+            'team_id',
+            'id',
+            'team_id'
+        );
+    }
 }
