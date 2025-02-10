@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::group(['prefix' => '/user/{user}'], function () {
 
     Route::get(uri: '/teams', action: function (User $user) {
         return  $user->teams()->get();
+    });
+
+    Route::get(uri: '/teams/tasks', action: function () {
+        return  Team::has('tasks')->with('tasks')->get();
     });
 
     Route::get(uri: '/projects', action: function (User $user) {
