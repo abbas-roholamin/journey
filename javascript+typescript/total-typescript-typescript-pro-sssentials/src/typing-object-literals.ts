@@ -75,3 +75,23 @@ export const interface_product: IProduct = {
   price: 100,
   created_at: new Date(),
 }
+
+// Dynamic keys with index Signatures and Record
+
+// 01
+export type TSubject = {
+  [key: string]: number
+}
+
+// 02
+export interface ISubject {
+  [key: string]: number
+}
+
+// 03
+export const object: {
+  [key: string]: number
+} = {}
+
+// 04
+export const Robject: Record<string, number> = {}
