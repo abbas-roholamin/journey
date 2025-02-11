@@ -120,3 +120,36 @@ export const interface_scores: IScore = {
   english: 120,
   math: 10,
 }
+
+// Records and Mapped Types in TypeScript
+type Environment = "dev" | "pro" | "stage"
+
+// type Config = Record<
+//   Environment,
+//   {
+//     url: string
+//     timeout: string
+//   }
+// >
+
+type Config = {
+  [env in Environment]: {
+    url: string
+    timeout: string
+  }
+}
+
+export const config: Config = {
+  dev: {
+    url: "",
+    timeout: "",
+  },
+  pro: {
+    url: "",
+    timeout: "",
+  },
+  stage: {
+    url: "",
+    timeout: "",
+  },
+}
