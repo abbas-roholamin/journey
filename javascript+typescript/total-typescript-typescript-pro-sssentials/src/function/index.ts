@@ -153,3 +153,9 @@ export function calculateArea(shape: Shape) {
     return Math.PI * shape.radius ** 2
   }
 }
+
+// Supporting Different Types of Keys in TypeScript
+
+export function hasKey(obj: Object, key: PropertyKey) {
+  return obj.hasOwnProperty(key)
+}

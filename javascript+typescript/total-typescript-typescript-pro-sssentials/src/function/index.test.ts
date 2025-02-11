@@ -8,6 +8,7 @@ import {
   handleError,
   handleRequest,
   handleSuccess,
+  hasKey,
   logMessage,
   move,
   updateUser,
@@ -116,6 +117,31 @@ describe("Function", () => {
     it("should return square area", () => {
       const result = calculateArea({ kind: "square", height: 10, width: 10 })
       expect(result).toEqual(100)
+    })
+  })
+
+  //Supporting Different Types of Keys in TypeScript
+  describe("Supporting Different Types of Keys in TypeScript", () => {
+    it("should return true", () => {
+      const obj = {
+        foo: "bar",
+      }
+      expect(hasKey(obj, "foo")).toBeTruthy()
+    })
+
+    it("should return circle with optional kind", () => {
+      const obj = {
+        1: "bar",
+      }
+      expect(hasKey(obj, 1)).toBeTruthy()
+    })
+
+    it("should return square area", () => {
+      const symb = Symbol("hello")
+      const obj = {
+        [symb]: "bar",
+      }
+      expect(hasKey(obj, symb)).toBeTruthy()
     })
   })
 })
