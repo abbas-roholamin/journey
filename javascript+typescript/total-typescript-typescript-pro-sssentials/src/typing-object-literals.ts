@@ -95,3 +95,28 @@ export const object: {
 
 // 04
 export const Robject: Record<string, number> = {}
+
+//  Allow Any String Key while Supporting Default Properties
+
+type TScores = {
+  [index: string]: number
+  math: number
+}
+
+export const type_scores: TScores = {
+  english: 120,
+  math: 120,
+}
+
+interface IBaseScore {
+  math: number
+}
+
+interface IScore extends IBaseScore {
+  [index: string]: number
+}
+
+export const interface_scores: IScore = {
+  english: 120,
+  math: 10,
+}
