@@ -35,10 +35,25 @@ app.use((req, res, next) => {
 // Routes
 app.use(TourRouter);
 app.use(UserRouter);
-app.all('*', (req, res) => {
-    res.status(404).json({
-        status: 'fail',
-        message: `Can't find ${req.originalUrl} on this server!`,
+app.all('*', (req, res, next) => {
+    // res.status(404).json({
+    //     status: 'fail',
+    //     message: `Can't find ${req.originalUrl} on this server!`,
+    // });
+
+    const error = new Error(`Can't find ${req.originalUrl} on this server!`);
+    error.statusCode = 404;
+    error.status = 'fail';
+
+    next(error);
+});
+
+app.use((error, req, res, next) => {
+    error.statusCode = error.statusCode || 500;
+    error.status = error.status || 'error';
+    res.status(error.statusCode).json({
+        status: error.status,
+        message: error.message,
     });
 });
 
