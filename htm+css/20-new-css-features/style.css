@@ -54,9 +54,22 @@
 @layer utils {
   .flex {
     display: flex;
+    gap: 1rem;
+  }
+
+  .flex-item {
+    flex: 1;
+    background: #fff;
   }
 
   .color-primary {
     color: var(--custom-color);
+  }
+
+  .items-wrapper {
+    display: contents;
+    .flex-item {
+      background: green;
+    }
   }
 }
