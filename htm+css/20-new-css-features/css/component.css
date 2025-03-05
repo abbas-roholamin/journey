@@ -1,0 +1,8 @@
+/** @format */
+
+.card {
+  border-radius: 1rem;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+}

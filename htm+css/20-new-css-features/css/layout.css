@@ -1,0 +1,10 @@
+/** @format */
+body {
+  font-size: 1rem;
+}
+
+.article {
+  container-type: inline-size;
+  container-name: article;
+  /* container: article / inline-size; */
+}
