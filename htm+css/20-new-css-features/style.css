@@ -16,6 +16,16 @@
   h1 {
     font-size: 5.5rem;
     text-wrap: balance;
+
+    & span {
+      color: green;
+    }
+
+    @media (min-width: 750px) {
+      & span {
+        color: blue;
+      }
+    }
   }
 }
 
