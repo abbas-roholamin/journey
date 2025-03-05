@@ -15,3 +15,22 @@ const scores: Scores = {
   english: 120,
   science: 120,
 }
+
+// Declaration merging in interface
+
+interface Logger {
+  log(message: string, code: number): void
+  // code: number
+}
+
+interface Logger {
+  log(message: string): void
+  // status: number
+}
+
+// @ts-expect-error
+const myLogger: Logger = {
+  log(message: string) {
+    console.log(message)
+  },
+}
