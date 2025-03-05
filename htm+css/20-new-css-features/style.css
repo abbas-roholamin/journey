@@ -15,6 +15,10 @@
   /* .article {
     width: 500px;
   } */
+
+  .btn-group {
+    padding: 1rem 0;
+  }
 }
 
 @layer component {
@@ -28,6 +32,7 @@
     margin-bottom: 1rem;
   }
 }
+
 @layer utils {
   .flex {
     display: flex;

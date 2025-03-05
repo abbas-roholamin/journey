@@ -2,3 +2,18 @@
 .flex {
   display: flex;
 }
+
+.btn-primary {
+  --bg-color: oklch(56% 0.32 301);
+  color: #fff;
+}
+
+.bg-secondary {
+  --bg-color: oklch(36% 0.33 280);
+  color: #fff;
+}
+
+.bg-tertiary {
+  --bg-color: oklch(22% 0.1 308);
+  color: #fff;
+}

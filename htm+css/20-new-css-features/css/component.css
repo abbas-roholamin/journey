@@ -6,3 +6,18 @@
   color: #fff;
   padding: 1rem;
 }
+
+.btn {
+  --bg-color: oklch(92% 0 0);
+  background: var(--bg-color);
+  border: 1px solid oklch(from var(--bg-color) calc(l - 0.15) c h);
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+
+  &:hover,
+  &:focus-visible {
+    background-color: oklch(from var(--bg-color) calc(l - 0.075) c h);
+    box-shadow: 0 0 5px 0 oklch(from var(--bg-color) calc(l - 0.15) c h);
+  }
+}
