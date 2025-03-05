@@ -16,3 +16,9 @@ Route::get('/user', function (Request $request) {
 Route::get('/posts-with-user', function () {
     return PostResource::collection(Post::with(relations: "user")->get());
 });
+
+Route::get('/user-with-where-has', function () {
+    return UserResource::collection(User::withWhereHas('teams', function ($query) {
+        return $query->where('name', 'like', '%Hamill%');
+    })->get());
+});
