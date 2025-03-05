@@ -17,3 +17,23 @@
   --bg-color: oklch(22% 0.1 308);
   color: #fff;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  gap: 1rem;
+}
+
+.item {
+  display: grid;
+  grid-column: 2 / 7;
+  grid-row: 2 / 4;
+  gap: 1rem;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+.subitem {
+  background: #fff;
+}
