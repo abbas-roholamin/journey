@@ -7,6 +7,8 @@ type User = {
 }
 
 type UserProfile = Omit<User, "password" | "email">
+//@ts-expect-error
+type UserCredentials = Pick<User, "email" | "password">
 
 type MakeChangeFunc = (user: UserProfile) => UserProfile
 
