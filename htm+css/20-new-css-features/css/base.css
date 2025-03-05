@@ -18,3 +18,9 @@ h1 {
     }
   }
 }
+
+@property --custom-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: red;
+}

@@ -36,6 +36,11 @@
     display: block;
     padding: 1rem;
 
+    & p {
+      --custom-color: green;
+      color: var(--custom-color);
+    }
+
     &:has(input:user-valid) {
       background: green;
     }
@@ -49,5 +54,9 @@
 @layer utils {
   .flex {
     display: flex;
+  }
+
+  .color-primary {
+    color: var(--custom-color);
   }
 }
