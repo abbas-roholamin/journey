@@ -2,11 +2,16 @@
 type User = {
   id: number
   name: string
+  email: string
+  password: string
 }
 
-type MakeChangeFunc = (user: User) => User
+type UserProfile = Omit<User, "password" | "email">
+
+type MakeChangeFunc = (user: UserProfile) => UserProfile
+
 export function updateUser(
-  users: User[],
+  users: UserProfile[],
   id: number,
   makeChange: MakeChangeFunc,
 ) {
