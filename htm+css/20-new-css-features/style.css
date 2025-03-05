@@ -17,7 +17,9 @@
   } */
 
   .btn-group {
-    padding: 1rem 0;
+    padding-block: 1rem 0;
+    padding-inline-left: 1rem;
+    padding-inline-right: 2rem;
   }
 }
 
