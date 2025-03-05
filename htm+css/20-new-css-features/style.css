@@ -31,6 +31,19 @@
   .card:not(:last-child) {
     margin-bottom: 1rem;
   }
+
+  .form {
+    display: block;
+    padding: 1rem;
+
+    &:has(input:user-valid) {
+      background: green;
+    }
+
+    &:has(input:user-invalid) {
+      background: blue;
+    }
+  }
 }
 
 @layer utils {
