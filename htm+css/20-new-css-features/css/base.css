@@ -19,6 +19,10 @@ h1 {
   }
 }
 
+textarea {
+  field-sizing: content;
+}
+
 @property --custom-color {
   syntax: "<color>";
   inherits: false;
