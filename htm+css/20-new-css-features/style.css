@@ -51,6 +51,25 @@
       background: blue;
     }
   }
+
+  .anchor {
+    anchor-name: --infobox;
+    background: palegoldenrod;
+    font-size: 3em;
+    width: fit-content;
+    border: 1px solid goldenrod;
+  }
+
+  .positionedElement {
+    position: absolute;
+    position-anchor: --infobox;
+    margin: 0;
+    top: anchor(top);
+    left: calc(anchor(right) + 10px);
+    bottom: anchor(bottom);
+    background-color: olive;
+    border: 1px solid darkolivegreen;
+  }
 }
 
 @layer utils {
