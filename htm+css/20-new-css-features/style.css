@@ -70,6 +70,42 @@
     background-color: olive;
     border: 1px solid darkolivegreen;
   }
+
+  a {
+    align-items: center;
+    color: hsl(0 0 0);
+    display: inline-grid;
+    filter: drop-shadow(0 3px 0 hsl(0 0 0 / 0.25));
+    font-size: 1.5rem;
+    gap: 0.5rem;
+    grid-template-columns: 30px auto;
+    overflow-x: hidden;
+    position: relative;
+    text-decoration: none;
+    transition: width ease 0.5s;
+    width: 35px;
+
+    svg {
+      fill: hsl(0 0 100%);
+      max-width: 25px;
+    }
+
+    span {
+      background: hsl(0 0 100%);
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+    }
+
+    &:is(:hover, :focus) {
+      width: min-content;
+    }
+  }
+
+  @supports (interpolate-size: allow-keywords) {
+    .notice {
+      display: none;
+    }
+  }
 }
 
 @layer utils {
