@@ -1,6 +1,6 @@
 /** @format */
 type User = {
-  id: number
+  readonly id: number
   name: string
   email: string
   password: string
