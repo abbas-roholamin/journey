@@ -4,6 +4,7 @@ type User = {
   name: string
   email: string
   password: string
+  image?: string
 }
 
 type UserProfile = Omit<User, "password" | "email">
@@ -11,6 +12,11 @@ type UserProfile = Omit<User, "password" | "email">
 type UserCredentials = Pick<User, "email" | "password">
 
 type MakeChangeFunc = (user: UserProfile) => UserProfile
+
+//@ts-expect-error
+type UserUpdateDTO = Partial<Omit<User, "id">>
+//@ts-expect-error
+type UserCreateDTO = Required<Omit<User, "id">>
 
 export function updateUser(
   users: UserProfile[],
