@@ -172,3 +172,19 @@ export function calculateArea(shape: Shape) {
 export function hasKey(obj: Object, key: PropertyKey) {
   return obj.hasOwnProperty(key)
 }
+
+// Readonly array
+
+export function printName(names: readonly string[]) {
+  for (const element of names) {
+    console.log(element)
+  }
+  // names.push()
+}
+
+export function printNumbers(numbers: ReadonlyArray<number>) {
+  for (const element of numbers) {
+    console.log(element)
+  }
+  // numbers.push()
+}
