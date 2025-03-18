@@ -11,6 +11,8 @@ import {
   hasKey,
   logMessage,
   move,
+  printMutableName,
+  printName,
   updateUser,
   validationUsername,
 } from "."
@@ -142,6 +144,16 @@ describe("Function", () => {
         [symb]: "bar",
       }
       expect(hasKey(obj, symb)).toBeTruthy()
+    })
+
+    it("Distinguishing Assignability Between Read-Only and Mutable Arrays", () => {
+      const mutableNames = ["Abbas", "ali"]
+      const readonlyNames = ["Abbas", "ali"] as const
+      printName(mutableNames)
+      printName(readonlyNames)
+      printMutableName(mutableNames)
+      //@ts-expect-error
+      printMutableName(readonlyNames)
     })
   })
 })

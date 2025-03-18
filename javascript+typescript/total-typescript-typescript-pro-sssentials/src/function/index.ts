@@ -182,6 +182,12 @@ export function printName(names: readonly string[]) {
   // names.push()
 }
 
+export function printMutableName(names: string[]) {
+  for (const element of names) {
+    console.log(element)
+  }
+}
+
 export function printNumbers(numbers: ReadonlyArray<number>) {
   for (const element of numbers) {
     console.log(element)
