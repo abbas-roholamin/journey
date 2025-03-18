@@ -22,3 +22,21 @@ const type = "button"
 export const buttonAttribute: ButtonAttribute = {
   type,
 }
+
+export const buttonProp = Object.freeze({
+  cancel: {
+    type: "button",
+  },
+  submit: {
+    type: "submit",
+  },
+})
+
+export const buttonProps = {
+  cancel: {
+    type: "button",
+  },
+  submit: {
+    type: "submit",
+  },
+} as const
