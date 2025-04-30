@@ -10,8 +10,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "12.11",
+        "laravel/framework": "12.11.1",
         "laravel/sanctum": "^4.0",
+        "laravel/telescope": "^5.7",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
