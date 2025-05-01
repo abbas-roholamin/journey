@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "test": "php ./vendor/bin/pest"
     },
     "devDependencies": {
         "axios": "^1.7.4",
