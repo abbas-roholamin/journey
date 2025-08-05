@@ -1,5 +1,5 @@
 import "../src/index.css";
-import { ContainerDecorator } from "./decorators";
+import { ContainerDecorator, innderDecorator } from "./decorators";
 
 //👇 Configures Storybook to log the actions( onArchiveTask and onPinTask ) in the UI.
 /** @type { import('@storybook/react').Preview } */
@@ -12,7 +12,7 @@ const preview = {
       },
     },
   },
-  decorators: [ContainerDecorator],
+  decorators: [innderDecorator, ContainerDecorator],
 };
 
 export default preview;
