@@ -12,7 +12,7 @@ const spacingDecorator = (story) => (
 );
 
 export default {
-  title: 'Example/Page',
+  title: 'Example/Layout/Page',
   component: Page,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
