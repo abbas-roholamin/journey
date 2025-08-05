@@ -1,6 +1,15 @@
 import { within, userEvent, expect } from '@storybook/test';
 
 import { Page } from './Page';
+const spacingDecorator = (story) => (
+  <div
+    style={{
+      padding: '2rem',
+    }}
+  >
+    {story()}
+  </div>
+);
 
 export default {
   title: 'Example/Page',
@@ -9,6 +18,7 @@ export default {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
+  decorators: [spacingDecorator],
 };
 
 export const LoggedOut = {};
