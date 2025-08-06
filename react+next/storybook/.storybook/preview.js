@@ -13,6 +13,18 @@ const preview = {
     }
   },
   decorators: [innderDecorator, ContainerDecorator],
+  globalTypes: {
+    theme: {
+      name: "Theme",
+      description: "Global theme for components",
+      defaultValue: "light",
+      toolbar: {
+        icon: "circlehollow",
+        items: ["light", "dark"],
+        showName: true
+      },
+    }
+  }
 };
 
 export default preview;

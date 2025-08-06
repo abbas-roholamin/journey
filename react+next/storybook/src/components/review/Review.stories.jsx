@@ -19,6 +19,9 @@ export const Default = {
 }
 
 export const Empty = {
+    parameters: {
+        theme: "dark",
+    },
     args: {
         rating: 0,
     },
