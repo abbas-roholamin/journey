@@ -1,0 +1,29 @@
+---
+import background from "../assets/background.svg";
+import Link from "../components/common/Link.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{Astro.props.title} - Astro</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="background" src={background.src} alt="" fetchpriority="high" />
+      <nav>
+        <Link href="/" class="text-sky-600">Astro</Link>
+        <Link href="/tags">Tags</Link>
+        <Link href="/users">Users</Link>
+      </nav>
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

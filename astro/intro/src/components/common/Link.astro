@@ -1,0 +1,19 @@
+---
+const { href, ...props } = Astro.props;
+---
+
+<a href={href} {...props}>
+  <slot />
+</a>
+
+<style>
+  a {
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll("a");
+  console.log(links);
+</script>

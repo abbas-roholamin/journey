@@ -1,0 +1,22 @@
+---
+import tags from "../constant/tags.json";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Tags">
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={`/tags/${tag.command}`}>{tag.label}</a>
+          {tag.args.map((arg) => ` ${arg}`)}
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<script>
+  import { log } from "../lib/utils";
+  log("tags");
+</script>

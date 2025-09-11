@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Astro",
+    "command": "astro",
+    "args": ["dev"]
+  },
+  {
+    "label": "Astro Build",
+    "command": "astro",
+    "args": ["build"]
+  }
+]
