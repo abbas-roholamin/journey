@@ -17,7 +17,7 @@ export default function Header() {
           <Menu size={24} />
         </button>
         <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/01-re-render">
+          <Link to="/">
             <img
               src="/tanstack-word-logo-white.svg"
               alt="TanStack Logo"
@@ -56,10 +56,30 @@ export default function Header() {
             <Home size={20} />
             <span className="font-medium">Re-renders</span>
           </Link>
-
-          {/* Demo Links Start */}
-
-          {/* Demo Links End */}
+          <Link
+            to="/011-update-parent-state"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 mb-2 transition-colors rounded-lg hover:bg-gray-800"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <Home size={20} />
+            <span className="font-medium">Re-render with UPMS</span>
+          </Link>
+          <Link
+            to="/012-the-big-re-renders-myth"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 mb-2 transition-colors rounded-lg hover:bg-gray-800"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <Home size={20} />
+            <span className="font-medium">Big Re-render Myth</span>
+          </Link>
         </nav>
       </aside>
     </>

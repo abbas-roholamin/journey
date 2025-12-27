@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R012TheBigReRendersMythRouteImport } from './routes/012-the-big-re-renders-myth'
+import { Route as R011UpdateParentStateRouteImport } from './routes/011-update-parent-state'
 import { Route as R01ReRendersRouteImport } from './routes/01-re-renders'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R012TheBigReRendersMythRoute = R012TheBigReRendersMythRouteImport.update({
+  id: '/012-the-big-re-renders-myth',
+  path: '/012-the-big-re-renders-myth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R011UpdateParentStateRoute = R011UpdateParentStateRouteImport.update({
+  id: '/011-update-parent-state',
+  path: '/011-update-parent-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R01ReRendersRoute = R01ReRendersRouteImport.update({
   id: '/01-re-renders',
   path: '/01-re-renders',
@@ -26,31 +38,66 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/01-re-renders': typeof R01ReRendersRoute
+  '/011-update-parent-state': typeof R011UpdateParentStateRoute
+  '/012-the-big-re-renders-myth': typeof R012TheBigReRendersMythRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/01-re-renders': typeof R01ReRendersRoute
+  '/011-update-parent-state': typeof R011UpdateParentStateRoute
+  '/012-the-big-re-renders-myth': typeof R012TheBigReRendersMythRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/01-re-renders': typeof R01ReRendersRoute
+  '/011-update-parent-state': typeof R011UpdateParentStateRoute
+  '/012-the-big-re-renders-myth': typeof R012TheBigReRendersMythRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/01-re-renders'
+  fullPaths:
+    | '/'
+    | '/01-re-renders'
+    | '/011-update-parent-state'
+    | '/012-the-big-re-renders-myth'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/01-re-renders'
-  id: '__root__' | '/' | '/01-re-renders'
+  to:
+    | '/'
+    | '/01-re-renders'
+    | '/011-update-parent-state'
+    | '/012-the-big-re-renders-myth'
+  id:
+    | '__root__'
+    | '/'
+    | '/01-re-renders'
+    | '/011-update-parent-state'
+    | '/012-the-big-re-renders-myth'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R01ReRendersRoute: typeof R01ReRendersRoute
+  R011UpdateParentStateRoute: typeof R011UpdateParentStateRoute
+  R012TheBigReRendersMythRoute: typeof R012TheBigReRendersMythRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/012-the-big-re-renders-myth': {
+      id: '/012-the-big-re-renders-myth'
+      path: '/012-the-big-re-renders-myth'
+      fullPath: '/012-the-big-re-renders-myth'
+      preLoaderRoute: typeof R012TheBigReRendersMythRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/011-update-parent-state': {
+      id: '/011-update-parent-state'
+      path: '/011-update-parent-state'
+      fullPath: '/011-update-parent-state'
+      preLoaderRoute: typeof R011UpdateParentStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/01-re-renders': {
       id: '/01-re-renders'
       path: '/01-re-renders'
@@ -71,6 +118,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R01ReRendersRoute: R01ReRendersRoute,
+  R011UpdateParentStateRoute: R011UpdateParentStateRoute,
+  R012TheBigReRendersMythRoute: R012TheBigReRendersMythRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
